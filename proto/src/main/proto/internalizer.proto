@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package internalizer.proto;
+
+option optimize_for = LITE_RUNTIME;
+option java_multiple_files = true;
+option java_package = "garden_leave.internalizer.proto";
+option java_outer_classname = "InternalizerProtos";
+
+import "fix/fix42.proto";
+import "fix/fix44.proto";
+import "fix/fix50sp2.proto";
+import "google/protobuf/timestamp.proto";
+
+message ExecutionReportWrapper {
+    oneof exec {
+        fix42.proto.ExecutionReport exec42 = 100;
+        fix44.proto.ExecutionReport exec44 = 101;
+        fix50sp2.proto.ExecutionReport exec50sp2 = 102;
+    }
+}
+
+message AddRequest {
+    oneof order {
+        fix42.proto.NewOrderSingle order42 = 100;
+        fix44.proto.NewOrderSingle order44 = 101;
+        fix50sp2.proto.NewOrderSingle order50sp2 = 102;
+    }
+}
+
+message AddResponse {
+    repeated ExecutionReportWrapper execution = 1;
+}
+
+message ModifyRequest {
+    oneof order {
+        fix42.proto.OrderCancelReplaceRequest order42 = 100;
+        fix44.proto.OrderCancelReplaceRequest order44 = 101;
+        fix50sp2.proto.OrderCancelReplaceRequest order50sp2 = 102;
+    }
+}
+
+message ModifyResponse {
+    oneof reject {
+        fix42.proto.OrderCancelReject reject42 = 200;
+        fix44.proto.OrderCancelReject reject44 = 201;
+        fix50sp2.proto.OrderCancelReject reject50sp2 = 202;
+    }
+
+    repeated ExecutionReportWrapper execution = 1;
+}
+
+message CancelRequest {
+    oneof order {
+        fix42.proto.OrderCancelRequest order42 = 100;
+        fix44.proto.OrderCancelRequest order44 = 101;
+        fix50sp2.proto.OrderCancelRequest order50sp2 = 102;
+    }
+}
+
+message CancelResponse {
+    oneof reject {
+        fix42.proto.OrderCancelReject reject42 = 200;
+        fix44.proto.OrderCancelReject reject44 = 201;
+        fix50sp2.proto.OrderCancelReject reject50sp2 = 202;
+    }
+
+    repeated ExecutionReportWrapper execution = 1;
+}
+
+service InternalizerService {
+    rpc AddOrder(AddRequest) returns (AddResponse);
+    rpc ModifyOrder(ModifyRequest) returns (ModifyResponse);
+    rpc CancelOrder(CancelRequest) returns (CancelResponse);
+    rpc CancelAll(CancelRequest) returns (CancelResponse);
+}

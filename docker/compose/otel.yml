@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--log.level=debug"
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    command:
+      - "--memory.max-traces"
+      - "10000"
+      - "--query.base-path"
+      - "/jaeger/ui"
+      - "--prometheus.server-url"
+      - "http://${PROMETHEUS_ADDR}"
+    restart: unless-stopped
+    ports:
+      - ${JAEGER_HTTP_UI_PORT}:${JAEGER_HTTP_UI_PORT}
+      - ${JAEGER_GRPC_OTEL_PORT}
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - METRICS_STORAGE_TYPE=prometheus
+      - LOG_LEVEL=debug
+
+  otelcol:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otelcol
+    deploy:
+      resources:
+        limits:
+          memory: 125M
+    restart: unless-stopped
+    command: [ "--config=/etc/otel-collector-config.yml",
+               "--config=/etc/otel-collector-config-extras.yml" ]
+    volumes:
+      - ./otel-collector/otel-collector-config.yml:/etc/otel-collector-config.yml
+      - ./otel-collector/otel-collector-config-extras.yml:/etc/otel-collector-config-extras.yml
+    ports:
+      - "4317:4317"     # OTLP over gRPC receiver
+      - "4318:4318"     # OTLP over HTTP receiver
+      - "9464"          # Prometheus exporter
+      - "8888"          # metrics endpoint
+    depends_on:
+      - jaeger
+
+volumes:
+  prom_data:

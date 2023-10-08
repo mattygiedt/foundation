@@ -1,0 +1,1552 @@
+syntax = "proto3";
+
+//
+// THIS FILE WAS AUTOMATICALLY GENERATED -- DO NOT EDIT!!!
+//
+// 2023-05-31 - 00:25:59.728966200
+//
+
+package fix42.proto;
+option java_multiple_files = false;
+option java_package = "garden_leave.fix42.proto";
+option java_outer_classname = "FIX42Protos";
+option optimize_for = LITE_RUNTIME;
+
+import "google/protobuf/timestamp.proto";
+
+message Header {
+  message FieldPresence {
+    bool begin_string = 1;
+    bool body_length = 2;
+    bool msg_type = 3;
+    bool sender_comp_id = 4;
+    bool target_comp_id = 5;
+    bool on_behalf_of_comp_id = 6;
+    bool deliver_to_comp_id = 7;
+    bool secure_data_len = 8;
+    bool secure_data = 9;
+    bool msg_seq_num = 10;
+    bool sender_sub_id = 11;
+    bool sender_location_id = 12;
+    bool target_sub_id = 13;
+    bool target_location_id = 14;
+    bool on_behalf_of_sub_id = 15;
+    bool on_behalf_of_location_id = 16;
+    bool deliver_to_sub_id = 17;
+    bool deliver_to_location_id = 18;
+    bool poss_dup_flag = 19;
+    bool poss_resend = 20;
+    bool sending_time = 21;
+    bool orig_sending_time = 22;
+    bool xml_data_len = 23;
+    bool xml_data = 24;
+    bool message_encoding = 25;
+    bool last_msg_seq_num_processed = 26;
+    bool on_behalf_of_sending_time = 27;
+  }
+
+  // FIELDS
+  FieldPresence field_presence = 1;
+  string begin_string = 2;  // tag 8, name BeginString, type STRING
+  int32 body_length = 3;  // tag 9, name BodyLength, type INT
+  string msg_type = 4;  // tag 35, name MsgType, type STRING
+  string sender_comp_id = 5;  // tag 49, name SenderCompID, type STRING
+  string target_comp_id = 6;  // tag 56, name TargetCompID, type STRING
+  string on_behalf_of_comp_id = 7;  // tag 115, name OnBehalfOfCompID, type STRING
+  string deliver_to_comp_id = 8;  // tag 128, name DeliverToCompID, type STRING
+  int32 secure_data_len = 9;  // tag 90, name SecureDataLen, type INT
+  string secure_data = 10;  // tag 91, name SecureData, type DATA
+  int32 msg_seq_num = 11;  // tag 34, name MsgSeqNum, type INT
+  string sender_sub_id = 12;  // tag 50, name SenderSubID, type STRING
+  string sender_location_id = 13;  // tag 142, name SenderLocationID, type STRING
+  string target_sub_id = 14;  // tag 57, name TargetSubID, type STRING
+  string target_location_id = 15;  // tag 143, name TargetLocationID, type STRING
+  string on_behalf_of_sub_id = 16;  // tag 116, name OnBehalfOfSubID, type STRING
+  string on_behalf_of_location_id = 17;  // tag 144, name OnBehalfOfLocationID, type STRING
+  string deliver_to_sub_id = 18;  // tag 129, name DeliverToSubID, type STRING
+  string deliver_to_location_id = 19;  // tag 145, name DeliverToLocationID, type STRING
+  bool poss_dup_flag = 20;  // tag 43, name PossDupFlag, type BOOLEAN
+  bool poss_resend = 21;  // tag 97, name PossResend, type BOOLEAN
+  uint64 sending_time = 22;  // tag 52, name SendingTime, type UTCTIMESTAMP
+  uint64 orig_sending_time = 23;  // tag 122, name OrigSendingTime, type UTCTIMESTAMP
+  int32 xml_data_len = 24;  // tag 212, name XmlDataLen, type INT
+  string xml_data = 25;  // tag 213, name XmlData, type DATA
+  string message_encoding = 26;  // tag 347, name MessageEncoding, type STRING
+  int32 last_msg_seq_num_processed = 27;  // tag 369, name LastMsgSeqNumProcessed, type INT
+  uint64 on_behalf_of_sending_time = 28;  // tag 370, name OnBehalfOfSendingTime, type UTCTIMESTAMP
+}
+
+// MESSAGES
+//
+message NewOrderSingle {
+  message NoAllocs {
+    message FieldPresence {
+      bool alloc_account = 1;
+      bool alloc_shares = 2;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string alloc_account = 2;  // tag 79, name AllocAccount, type STRING
+    double alloc_shares = 3;  // tag 80, name AllocShares, type QTY
+  }
+
+  message NoTradingSessions {
+    message FieldPresence {
+      bool trading_session_id = 1;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string trading_session_id = 2;  // tag 336, name TradingSessionID, type STRING
+  }
+
+  message FieldPresence {
+    bool cl_ord_id = 1;
+    bool client_id = 2;
+    bool exec_broker = 3;
+    bool account = 4;
+    bool settlmnt_typ = 5;
+    bool fut_sett_date = 6;
+    bool handl_inst = 7;
+    bool exec_inst = 8;
+    bool min_qty = 9;
+    bool max_floor = 10;
+    bool ex_destination = 11;
+    bool process_code = 12;
+    bool symbol = 13;
+    bool symbol_sfx = 14;
+    bool security_id = 15;
+    bool id_source = 16;
+    bool security_type = 17;
+    bool maturity_month_year = 18;
+    bool maturity_day = 19;
+    bool put_or_call = 20;
+    bool strike_price = 21;
+    bool opt_attribute = 22;
+    bool contract_multiplier = 23;
+    bool coupon_rate = 24;
+    bool security_exchange = 25;
+    bool issuer = 26;
+    bool encoded_issuer_len = 27;
+    bool encoded_issuer = 28;
+    bool security_desc = 29;
+    bool encoded_security_desc_len = 30;
+    bool encoded_security_desc = 31;
+    bool prev_close_px = 32;
+    bool side = 33;
+    bool locate_reqd = 34;
+    bool transact_time = 35;
+    bool order_qty = 36;
+    bool cash_order_qty = 37;
+    bool ord_type = 38;
+    bool price = 39;
+    bool stop_px = 40;
+    bool currency = 41;
+    bool compliance_id = 42;
+    bool solicited_flag = 43;
+    bool ioi_id = 44;
+    bool quote_id = 45;
+    bool time_in_force = 46;
+    bool effective_time = 47;
+    bool expire_date = 48;
+    bool expire_time = 49;
+    bool gt_booking_inst = 50;
+    bool commission = 51;
+    bool comm_type = 52;
+    bool rule80a = 53;
+    bool forex_req = 54;
+    bool settl_currency = 55;
+    bool text = 56;
+    bool encoded_text_len = 57;
+    bool encoded_text = 58;
+    bool fut_sett_date2 = 59;
+    bool order_qty2 = 60;
+    bool open_close = 61;
+    bool covered_or_uncovered = 62;
+    bool customer_or_firm = 63;
+    bool max_show = 64;
+    bool peg_difference = 65;
+    bool discretion_inst = 66;
+    bool discretion_offset = 67;
+    bool clearing_firm = 68;
+    bool clearing_account = 69;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string cl_ord_id = 5;  // tag 11, name ClOrdID, type STRING
+  string client_id = 6;  // tag 109, name ClientID, type STRING
+  string exec_broker = 7;  // tag 76, name ExecBroker, type STRING
+  string account = 8;  // tag 1, name Account, type STRING
+  int32 settlmnt_typ = 9;  // tag 63, name SettlmntTyp, type CHAR
+  string fut_sett_date = 10;  // tag 64, name FutSettDate, type LOCALMKTDATE
+  int32 handl_inst = 11;  // tag 21, name HandlInst, type CHAR
+  string exec_inst = 12;  // tag 18, name ExecInst, type MULTIPLEVALUESTRING
+  double min_qty = 13;  // tag 110, name MinQty, type QTY
+  double max_floor = 14;  // tag 111, name MaxFloor, type QTY
+  string ex_destination = 15;  // tag 100, name ExDestination, type EXCHANGE
+  int32 process_code = 16;  // tag 81, name ProcessCode, type CHAR
+  string symbol = 17;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 18;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 19;  // tag 48, name SecurityID, type STRING
+  string id_source = 20;  // tag 22, name IDSource, type STRING
+  string security_type = 21;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 22;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 23;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 24;  // tag 201, name PutOrCall, type INT
+  double strike_price = 25;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 26;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 27;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 28;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 29;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 30;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 31;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 32;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 33;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 34;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 35;  // tag 351, name EncodedSecurityDesc, type DATA
+  double prev_close_px = 36;  // tag 140, name PrevClosePx, type PRICE
+  int32 side = 37;  // tag 54, name Side, type CHAR
+  bool locate_reqd = 38;  // tag 114, name LocateReqd, type BOOLEAN
+  uint64 transact_time = 39;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  double order_qty = 40;  // tag 38, name OrderQty, type QTY
+  double cash_order_qty = 41;  // tag 152, name CashOrderQty, type QTY
+  int32 ord_type = 42;  // tag 40, name OrdType, type CHAR
+  double price = 43;  // tag 44, name Price, type PRICE
+  double stop_px = 44;  // tag 99, name StopPx, type PRICE
+  string currency = 45;  // tag 15, name Currency, type CURRENCY
+  string compliance_id = 46;  // tag 376, name ComplianceID, type STRING
+  bool solicited_flag = 47;  // tag 377, name SolicitedFlag, type BOOLEAN
+  string ioi_id = 48;  // tag 23, name IOIID, type STRING
+  string quote_id = 49;  // tag 117, name QuoteID, type STRING
+  int32 time_in_force = 50;  // tag 59, name TimeInForce, type CHAR
+  uint64 effective_time = 51;  // tag 168, name EffectiveTime, type UTCTIMESTAMP
+  string expire_date = 52;  // tag 432, name ExpireDate, type LOCALMKTDATE
+  uint64 expire_time = 53;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+  int32 gt_booking_inst = 54;  // tag 427, name GTBookingInst, type INT
+  double commission = 55;  // tag 12, name Commission, type AMT
+  int32 comm_type = 56;  // tag 13, name CommType, type CHAR
+  int32 rule80a = 57;  // tag 47, name Rule80A, type CHAR
+  bool forex_req = 58;  // tag 121, name ForexReq, type BOOLEAN
+  string settl_currency = 59;  // tag 120, name SettlCurrency, type CURRENCY
+  string text = 60;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 61;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 62;  // tag 355, name EncodedText, type DATA
+  string fut_sett_date2 = 63;  // tag 193, name FutSettDate2, type LOCALMKTDATE
+  double order_qty2 = 64;  // tag 192, name OrderQty2, type QTY
+  int32 open_close = 65;  // tag 77, name OpenClose, type CHAR
+  int32 covered_or_uncovered = 66;  // tag 203, name CoveredOrUncovered, type INT
+  int32 customer_or_firm = 67;  // tag 204, name CustomerOrFirm, type INT
+  double max_show = 68;  // tag 210, name MaxShow, type QTY
+  double peg_difference = 69;  // tag 211, name PegDifference, type PRICEOFFSET
+  int32 discretion_inst = 70;  // tag 388, name DiscretionInst, type CHAR
+  double discretion_offset = 71;  // tag 389, name DiscretionOffset, type PRICEOFFSET
+  string clearing_firm = 72;  // tag 439, name ClearingFirm, type STRING
+  string clearing_account = 73;  // tag 440, name ClearingAccount, type STRING
+
+  // GROUPS
+  repeated NoAllocs no_allocs = 74;
+  repeated NoTradingSessions no_trading_sessions = 75;
+}
+
+message SequenceReset {
+  message FieldPresence {
+    bool gap_fill_flag = 1;
+    bool new_seq_no = 2;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  bool gap_fill_flag = 5;  // tag 123, name GapFillFlag, type BOOLEAN
+  int32 new_seq_no = 6;  // tag 36, name NewSeqNo, type INT
+}
+
+message OrderCancelReject {
+  message FieldPresence {
+    bool order_id = 1;
+    bool secondary_order_id = 2;
+    bool cl_ord_id = 3;
+    bool orig_cl_ord_id = 4;
+    bool ord_status = 5;
+    bool client_id = 6;
+    bool exec_broker = 7;
+    bool list_id = 8;
+    bool account = 9;
+    bool transact_time = 10;
+    bool cxl_rej_response_to = 11;
+    bool cxl_rej_reason = 12;
+    bool text = 13;
+    bool encoded_text_len = 14;
+    bool encoded_text = 15;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string order_id = 5;  // tag 37, name OrderID, type STRING
+  string secondary_order_id = 6;  // tag 198, name SecondaryOrderID, type STRING
+  string cl_ord_id = 7;  // tag 11, name ClOrdID, type STRING
+  string orig_cl_ord_id = 8;  // tag 41, name OrigClOrdID, type STRING
+  int32 ord_status = 9;  // tag 39, name OrdStatus, type CHAR
+  string client_id = 10;  // tag 109, name ClientID, type STRING
+  string exec_broker = 11;  // tag 76, name ExecBroker, type STRING
+  string list_id = 12;  // tag 66, name ListID, type STRING
+  string account = 13;  // tag 1, name Account, type STRING
+  uint64 transact_time = 14;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  int32 cxl_rej_response_to = 15;  // tag 434, name CxlRejResponseTo, type CHAR
+  int32 cxl_rej_reason = 16;  // tag 102, name CxlRejReason, type INT
+  string text = 17;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 18;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 19;  // tag 355, name EncodedText, type DATA
+}
+
+message Reject {
+  message FieldPresence {
+    bool ref_seq_num = 1;
+    bool ref_tag_id = 2;
+    bool ref_msg_type = 3;
+    bool session_reject_reason = 4;
+    bool text = 5;
+    bool encoded_text_len = 6;
+    bool encoded_text = 7;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 ref_seq_num = 5;  // tag 45, name RefSeqNum, type INT
+  int32 ref_tag_id = 6;  // tag 371, name RefTagID, type INT
+  string ref_msg_type = 7;  // tag 372, name RefMsgType, type STRING
+  int32 session_reject_reason = 8;  // tag 373, name SessionRejectReason, type INT
+  string text = 9;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 10;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 11;  // tag 355, name EncodedText, type DATA
+}
+
+message IndicationofInterest {
+  message NoIoiQualifiers {
+    message FieldPresence {
+      bool ioi_qualifier = 1;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    int32 ioi_qualifier = 2;  // tag 104, name IOIQualifier, type CHAR
+  }
+
+  message NoRoutingIds {
+    message FieldPresence {
+      bool routing_type = 1;
+      bool routing_id = 2;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    int32 routing_type = 2;  // tag 216, name RoutingType, type INT
+    string routing_id = 3;  // tag 217, name RoutingID, type STRING
+  }
+
+  message FieldPresence {
+    bool ioi_id = 1;
+    bool ioi_trans_type = 2;
+    bool ioi_ref_id = 3;
+    bool symbol = 4;
+    bool symbol_sfx = 5;
+    bool security_id = 6;
+    bool id_source = 7;
+    bool security_type = 8;
+    bool maturity_month_year = 9;
+    bool maturity_day = 10;
+    bool put_or_call = 11;
+    bool strike_price = 12;
+    bool opt_attribute = 13;
+    bool contract_multiplier = 14;
+    bool coupon_rate = 15;
+    bool security_exchange = 16;
+    bool issuer = 17;
+    bool encoded_issuer_len = 18;
+    bool encoded_issuer = 19;
+    bool security_desc = 20;
+    bool encoded_security_desc_len = 21;
+    bool encoded_security_desc = 22;
+    bool side = 23;
+    bool ioi_shares = 24;
+    bool price = 25;
+    bool currency = 26;
+    bool valid_until_time = 27;
+    bool ioi_qlty_ind = 28;
+    bool ioi_natural_flag = 29;
+    bool text = 30;
+    bool encoded_text_len = 31;
+    bool encoded_text = 32;
+    bool transact_time = 33;
+    bool url_link = 34;
+    bool spread_to_benchmark = 35;
+    bool benchmark = 36;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string ioi_id = 5;  // tag 23, name IOIID, type STRING
+  int32 ioi_trans_type = 6;  // tag 28, name IOITransType, type CHAR
+  string ioi_ref_id = 7;  // tag 26, name IOIRefID, type STRING
+  string symbol = 8;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 9;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 10;  // tag 48, name SecurityID, type STRING
+  string id_source = 11;  // tag 22, name IDSource, type STRING
+  string security_type = 12;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 13;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 14;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 15;  // tag 201, name PutOrCall, type INT
+  double strike_price = 16;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 17;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 18;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 19;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 20;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 21;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 22;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 23;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 24;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 25;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 26;  // tag 351, name EncodedSecurityDesc, type DATA
+  int32 side = 27;  // tag 54, name Side, type CHAR
+  string ioi_shares = 28;  // tag 27, name IOIShares, type STRING
+  double price = 29;  // tag 44, name Price, type PRICE
+  string currency = 30;  // tag 15, name Currency, type CURRENCY
+  uint64 valid_until_time = 31;  // tag 62, name ValidUntilTime, type UTCTIMESTAMP
+  int32 ioi_qlty_ind = 32;  // tag 25, name IOIQltyInd, type CHAR
+  bool ioi_natural_flag = 33;  // tag 130, name IOINaturalFlag, type BOOLEAN
+  string text = 34;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 35;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 36;  // tag 355, name EncodedText, type DATA
+  uint64 transact_time = 37;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  string url_link = 38;  // tag 149, name URLLink, type STRING
+  double spread_to_benchmark = 39;  // tag 218, name SpreadToBenchmark, type PRICEOFFSET
+  int32 benchmark = 40;  // tag 219, name Benchmark, type CHAR
+
+  // GROUPS
+  repeated NoIoiQualifiers no_ioi_qualifiers = 41;
+  repeated NoRoutingIds no_routing_ids = 42;
+}
+
+message ExecutionReport {
+  message NoContraBrokers {
+    message FieldPresence {
+      bool contra_broker = 1;
+      bool contra_trader = 2;
+      bool contra_trade_qty = 3;
+      bool contra_trade_time = 4;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string contra_broker = 2;  // tag 375, name ContraBroker, type STRING
+    string contra_trader = 3;  // tag 337, name ContraTrader, type STRING
+    double contra_trade_qty = 4;  // tag 437, name ContraTradeQty, type QTY
+    uint64 contra_trade_time = 5;  // tag 438, name ContraTradeTime, type UTCTIMESTAMP
+  }
+
+  message FieldPresence {
+    bool order_id = 1;
+    bool secondary_order_id = 2;
+    bool cl_ord_id = 3;
+    bool orig_cl_ord_id = 4;
+    bool client_id = 5;
+    bool exec_broker = 6;
+    bool list_id = 7;
+    bool exec_id = 8;
+    bool exec_trans_type = 9;
+    bool exec_ref_id = 10;
+    bool exec_type = 11;
+    bool ord_status = 12;
+    bool ord_rej_reason = 13;
+    bool exec_restatement_reason = 14;
+    bool account = 15;
+    bool settlmnt_typ = 16;
+    bool fut_sett_date = 17;
+    bool symbol = 18;
+    bool symbol_sfx = 19;
+    bool security_id = 20;
+    bool id_source = 21;
+    bool security_type = 22;
+    bool maturity_month_year = 23;
+    bool maturity_day = 24;
+    bool put_or_call = 25;
+    bool strike_price = 26;
+    bool opt_attribute = 27;
+    bool contract_multiplier = 28;
+    bool coupon_rate = 29;
+    bool security_exchange = 30;
+    bool issuer = 31;
+    bool encoded_issuer_len = 32;
+    bool encoded_issuer = 33;
+    bool security_desc = 34;
+    bool encoded_security_desc_len = 35;
+    bool encoded_security_desc = 36;
+    bool side = 37;
+    bool order_qty = 38;
+    bool cash_order_qty = 39;
+    bool ord_type = 40;
+    bool price = 41;
+    bool stop_px = 42;
+    bool peg_difference = 43;
+    bool discretion_inst = 44;
+    bool discretion_offset = 45;
+    bool currency = 46;
+    bool compliance_id = 47;
+    bool solicited_flag = 48;
+    bool time_in_force = 49;
+    bool effective_time = 50;
+    bool expire_date = 51;
+    bool expire_time = 52;
+    bool exec_inst = 53;
+    bool rule80a = 54;
+    bool last_shares = 55;
+    bool last_px = 56;
+    bool last_spot_rate = 57;
+    bool last_forward_points = 58;
+    bool last_mkt = 59;
+    bool trading_session_id = 60;
+    bool last_capacity = 61;
+    bool leaves_qty = 62;
+    bool cum_qty = 63;
+    bool avg_px = 64;
+    bool day_order_qty = 65;
+    bool day_cum_qty = 66;
+    bool day_avg_px = 67;
+    bool gt_booking_inst = 68;
+    bool trade_date = 69;
+    bool transact_time = 70;
+    bool report_to_exch = 71;
+    bool commission = 72;
+    bool comm_type = 73;
+    bool gross_trade_amt = 74;
+    bool settl_curr_amt = 75;
+    bool settl_currency = 76;
+    bool settl_curr_fx_rate = 77;
+    bool settl_curr_fx_rate_calc = 78;
+    bool handl_inst = 79;
+    bool min_qty = 80;
+    bool max_floor = 81;
+    bool open_close = 82;
+    bool max_show = 83;
+    bool text = 84;
+    bool encoded_text_len = 85;
+    bool encoded_text = 86;
+    bool fut_sett_date2 = 87;
+    bool order_qty2 = 88;
+    bool clearing_firm = 89;
+    bool clearing_account = 90;
+    bool multi_leg_reporting_type = 91;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string order_id = 5;  // tag 37, name OrderID, type STRING
+  string secondary_order_id = 6;  // tag 198, name SecondaryOrderID, type STRING
+  string cl_ord_id = 7;  // tag 11, name ClOrdID, type STRING
+  string orig_cl_ord_id = 8;  // tag 41, name OrigClOrdID, type STRING
+  string client_id = 9;  // tag 109, name ClientID, type STRING
+  string exec_broker = 10;  // tag 76, name ExecBroker, type STRING
+  string list_id = 11;  // tag 66, name ListID, type STRING
+  string exec_id = 12;  // tag 17, name ExecID, type STRING
+  int32 exec_trans_type = 13;  // tag 20, name ExecTransType, type CHAR
+  string exec_ref_id = 14;  // tag 19, name ExecRefID, type STRING
+  int32 exec_type = 15;  // tag 150, name ExecType, type CHAR
+  int32 ord_status = 16;  // tag 39, name OrdStatus, type CHAR
+  int32 ord_rej_reason = 17;  // tag 103, name OrdRejReason, type INT
+  int32 exec_restatement_reason = 18;  // tag 378, name ExecRestatementReason, type INT
+  string account = 19;  // tag 1, name Account, type STRING
+  int32 settlmnt_typ = 20;  // tag 63, name SettlmntTyp, type CHAR
+  string fut_sett_date = 21;  // tag 64, name FutSettDate, type LOCALMKTDATE
+  string symbol = 22;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 23;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 24;  // tag 48, name SecurityID, type STRING
+  string id_source = 25;  // tag 22, name IDSource, type STRING
+  string security_type = 26;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 27;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 28;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 29;  // tag 201, name PutOrCall, type INT
+  double strike_price = 30;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 31;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 32;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 33;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 34;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 35;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 36;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 37;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 38;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 39;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 40;  // tag 351, name EncodedSecurityDesc, type DATA
+  int32 side = 41;  // tag 54, name Side, type CHAR
+  double order_qty = 42;  // tag 38, name OrderQty, type QTY
+  double cash_order_qty = 43;  // tag 152, name CashOrderQty, type QTY
+  int32 ord_type = 44;  // tag 40, name OrdType, type CHAR
+  double price = 45;  // tag 44, name Price, type PRICE
+  double stop_px = 46;  // tag 99, name StopPx, type PRICE
+  double peg_difference = 47;  // tag 211, name PegDifference, type PRICEOFFSET
+  int32 discretion_inst = 48;  // tag 388, name DiscretionInst, type CHAR
+  double discretion_offset = 49;  // tag 389, name DiscretionOffset, type PRICEOFFSET
+  string currency = 50;  // tag 15, name Currency, type CURRENCY
+  string compliance_id = 51;  // tag 376, name ComplianceID, type STRING
+  bool solicited_flag = 52;  // tag 377, name SolicitedFlag, type BOOLEAN
+  int32 time_in_force = 53;  // tag 59, name TimeInForce, type CHAR
+  uint64 effective_time = 54;  // tag 168, name EffectiveTime, type UTCTIMESTAMP
+  string expire_date = 55;  // tag 432, name ExpireDate, type LOCALMKTDATE
+  uint64 expire_time = 56;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+  string exec_inst = 57;  // tag 18, name ExecInst, type MULTIPLEVALUESTRING
+  int32 rule80a = 58;  // tag 47, name Rule80A, type CHAR
+  double last_shares = 59;  // tag 32, name LastShares, type QTY
+  double last_px = 60;  // tag 31, name LastPx, type PRICE
+  double last_spot_rate = 61;  // tag 194, name LastSpotRate, type PRICE
+  double last_forward_points = 62;  // tag 195, name LastForwardPoints, type PRICEOFFSET
+  string last_mkt = 63;  // tag 30, name LastMkt, type EXCHANGE
+  string trading_session_id = 64;  // tag 336, name TradingSessionID, type STRING
+  int32 last_capacity = 65;  // tag 29, name LastCapacity, type CHAR
+  double leaves_qty = 66;  // tag 151, name LeavesQty, type QTY
+  double cum_qty = 67;  // tag 14, name CumQty, type QTY
+  double avg_px = 68;  // tag 6, name AvgPx, type PRICE
+  double day_order_qty = 69;  // tag 424, name DayOrderQty, type QTY
+  double day_cum_qty = 70;  // tag 425, name DayCumQty, type QTY
+  double day_avg_px = 71;  // tag 426, name DayAvgPx, type PRICE
+  int32 gt_booking_inst = 72;  // tag 427, name GTBookingInst, type INT
+  string trade_date = 73;  // tag 75, name TradeDate, type LOCALMKTDATE
+  uint64 transact_time = 74;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  bool report_to_exch = 75;  // tag 113, name ReportToExch, type BOOLEAN
+  double commission = 76;  // tag 12, name Commission, type AMT
+  int32 comm_type = 77;  // tag 13, name CommType, type CHAR
+  double gross_trade_amt = 78;  // tag 381, name GrossTradeAmt, type AMT
+  double settl_curr_amt = 79;  // tag 119, name SettlCurrAmt, type AMT
+  string settl_currency = 80;  // tag 120, name SettlCurrency, type CURRENCY
+  double settl_curr_fx_rate = 81;  // tag 155, name SettlCurrFxRate, type FLOAT
+  int32 settl_curr_fx_rate_calc = 82;  // tag 156, name SettlCurrFxRateCalc, type CHAR
+  int32 handl_inst = 83;  // tag 21, name HandlInst, type CHAR
+  double min_qty = 84;  // tag 110, name MinQty, type QTY
+  double max_floor = 85;  // tag 111, name MaxFloor, type QTY
+  int32 open_close = 86;  // tag 77, name OpenClose, type CHAR
+  double max_show = 87;  // tag 210, name MaxShow, type QTY
+  string text = 88;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 89;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 90;  // tag 355, name EncodedText, type DATA
+  string fut_sett_date2 = 91;  // tag 193, name FutSettDate2, type LOCALMKTDATE
+  double order_qty2 = 92;  // tag 192, name OrderQty2, type QTY
+  string clearing_firm = 93;  // tag 439, name ClearingFirm, type STRING
+  string clearing_account = 94;  // tag 440, name ClearingAccount, type STRING
+  int32 multi_leg_reporting_type = 95;  // tag 442, name MultiLegReportingType, type CHAR
+
+  // GROUPS
+  repeated NoContraBrokers no_contra_brokers = 96;
+}
+
+message Logout {
+  message FieldPresence {
+    bool text = 1;
+    bool encoded_text_len = 2;
+    bool encoded_text = 3;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string text = 5;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 6;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 7;  // tag 355, name EncodedText, type DATA
+}
+
+message MarketDataIncrementalRefresh {
+  message NoMdEntries {
+    message FieldPresence {
+      bool md_update_action = 1;
+      bool delete_reason = 2;
+      bool md_entry_type = 3;
+      bool md_entry_id = 4;
+      bool md_entry_ref_id = 5;
+      bool symbol = 6;
+      bool symbol_sfx = 7;
+      bool security_id = 8;
+      bool id_source = 9;
+      bool security_type = 10;
+      bool maturity_month_year = 11;
+      bool maturity_day = 12;
+      bool put_or_call = 13;
+      bool strike_price = 14;
+      bool opt_attribute = 15;
+      bool contract_multiplier = 16;
+      bool coupon_rate = 17;
+      bool security_exchange = 18;
+      bool issuer = 19;
+      bool encoded_issuer_len = 20;
+      bool encoded_issuer = 21;
+      bool security_desc = 22;
+      bool encoded_security_desc_len = 23;
+      bool encoded_security_desc = 24;
+      bool financial_status = 25;
+      bool corporate_action = 26;
+      bool md_entry_px = 27;
+      bool currency = 28;
+      bool md_entry_size = 29;
+      bool md_entry_date = 30;
+      bool md_entry_time = 31;
+      bool tick_direction = 32;
+      bool md_mkt = 33;
+      bool trading_session_id = 34;
+      bool quote_condition = 35;
+      bool trade_condition = 36;
+      bool md_entry_originator = 37;
+      bool location_id = 38;
+      bool desk_id = 39;
+      bool open_close_settle_flag = 40;
+      bool time_in_force = 41;
+      bool expire_date = 42;
+      bool expire_time = 43;
+      bool min_qty = 44;
+      bool exec_inst = 45;
+      bool seller_days = 46;
+      bool order_id = 47;
+      bool quote_entry_id = 48;
+      bool md_entry_buyer = 49;
+      bool md_entry_seller = 50;
+      bool number_of_orders = 51;
+      bool md_entry_position_no = 52;
+      bool total_volume_traded = 53;
+      bool text = 54;
+      bool encoded_text_len = 55;
+      bool encoded_text = 56;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    int32 md_update_action = 2;  // tag 279, name MDUpdateAction, type CHAR
+    int32 delete_reason = 3;  // tag 285, name DeleteReason, type CHAR
+    int32 md_entry_type = 4;  // tag 269, name MDEntryType, type CHAR
+    string md_entry_id = 5;  // tag 278, name MDEntryID, type STRING
+    string md_entry_ref_id = 6;  // tag 280, name MDEntryRefID, type STRING
+    string symbol = 7;  // tag 55, name Symbol, type STRING
+    string symbol_sfx = 8;  // tag 65, name SymbolSfx, type STRING
+    string security_id = 9;  // tag 48, name SecurityID, type STRING
+    string id_source = 10;  // tag 22, name IDSource, type STRING
+    string security_type = 11;  // tag 167, name SecurityType, type STRING
+    string maturity_month_year = 12;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+    int32 maturity_day = 13;  // tag 205, name MaturityDay, type DAYOFMONTH
+    int32 put_or_call = 14;  // tag 201, name PutOrCall, type INT
+    double strike_price = 15;  // tag 202, name StrikePrice, type PRICE
+    int32 opt_attribute = 16;  // tag 206, name OptAttribute, type CHAR
+    double contract_multiplier = 17;  // tag 231, name ContractMultiplier, type FLOAT
+    double coupon_rate = 18;  // tag 223, name CouponRate, type FLOAT
+    string security_exchange = 19;  // tag 207, name SecurityExchange, type EXCHANGE
+    string issuer = 20;  // tag 106, name Issuer, type STRING
+    int32 encoded_issuer_len = 21;  // tag 348, name EncodedIssuerLen, type INT
+    string encoded_issuer = 22;  // tag 349, name EncodedIssuer, type DATA
+    string security_desc = 23;  // tag 107, name SecurityDesc, type STRING
+    int32 encoded_security_desc_len = 24;  // tag 350, name EncodedSecurityDescLen, type INT
+    string encoded_security_desc = 25;  // tag 351, name EncodedSecurityDesc, type DATA
+    int32 financial_status = 26;  // tag 291, name FinancialStatus, type CHAR
+    int32 corporate_action = 27;  // tag 292, name CorporateAction, type CHAR
+    double md_entry_px = 28;  // tag 270, name MDEntryPx, type PRICE
+    string currency = 29;  // tag 15, name Currency, type CURRENCY
+    double md_entry_size = 30;  // tag 271, name MDEntrySize, type QTY
+    uint64 md_entry_date = 31;  // tag 272, name MDEntryDate, type UTCDATE
+    uint64 md_entry_time = 32;  // tag 273, name MDEntryTime, type UTCTIMEONLY
+    int32 tick_direction = 33;  // tag 274, name TickDirection, type CHAR
+    string md_mkt = 34;  // tag 275, name MDMkt, type EXCHANGE
+    string trading_session_id = 35;  // tag 336, name TradingSessionID, type STRING
+    string quote_condition = 36;  // tag 276, name QuoteCondition, type MULTIPLEVALUESTRING
+    string trade_condition = 37;  // tag 277, name TradeCondition, type MULTIPLEVALUESTRING
+    string md_entry_originator = 38;  // tag 282, name MDEntryOriginator, type STRING
+    string location_id = 39;  // tag 283, name LocationID, type STRING
+    string desk_id = 40;  // tag 284, name DeskID, type STRING
+    int32 open_close_settle_flag = 41;  // tag 286, name OpenCloseSettleFlag, type CHAR
+    int32 time_in_force = 42;  // tag 59, name TimeInForce, type CHAR
+    string expire_date = 43;  // tag 432, name ExpireDate, type LOCALMKTDATE
+    uint64 expire_time = 44;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+    double min_qty = 45;  // tag 110, name MinQty, type QTY
+    string exec_inst = 46;  // tag 18, name ExecInst, type MULTIPLEVALUESTRING
+    int32 seller_days = 47;  // tag 287, name SellerDays, type INT
+    string order_id = 48;  // tag 37, name OrderID, type STRING
+    string quote_entry_id = 49;  // tag 299, name QuoteEntryID, type STRING
+    string md_entry_buyer = 50;  // tag 288, name MDEntryBuyer, type STRING
+    string md_entry_seller = 51;  // tag 289, name MDEntrySeller, type STRING
+    int32 number_of_orders = 52;  // tag 346, name NumberOfOrders, type INT
+    int32 md_entry_position_no = 53;  // tag 290, name MDEntryPositionNo, type INT
+    double total_volume_traded = 54;  // tag 387, name TotalVolumeTraded, type QTY
+    string text = 55;  // tag 58, name Text, type STRING
+    int32 encoded_text_len = 56;  // tag 354, name EncodedTextLen, type INT
+    string encoded_text = 57;  // tag 355, name EncodedText, type DATA
+  }
+
+  message FieldPresence {
+    bool md_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string md_req_id = 5;  // tag 262, name MDReqID, type STRING
+
+  // GROUPS
+  repeated NoMdEntries no_md_entries = 6;
+}
+
+message ResendRequest {
+  message FieldPresence {
+    bool begin_seq_no = 1;
+    bool end_seq_no = 2;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 begin_seq_no = 5;  // tag 7, name BeginSeqNo, type INT
+  int32 end_seq_no = 6;  // tag 16, name EndSeqNo, type INT
+}
+
+message Logon {
+  message NoMsgTypes {
+    message FieldPresence {
+      bool ref_msg_type = 1;
+      bool msg_direction = 2;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string ref_msg_type = 2;  // tag 372, name RefMsgType, type STRING
+    int32 msg_direction = 3;  // tag 385, name MsgDirection, type CHAR
+  }
+
+  message FieldPresence {
+    bool encrypt_method = 1;
+    bool heart_bt_int = 2;
+    bool raw_data_length = 3;
+    bool raw_data = 4;
+    bool reset_seq_num_flag = 5;
+    bool max_message_size = 6;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 encrypt_method = 5;  // tag 98, name EncryptMethod, type INT
+  int32 heart_bt_int = 6;  // tag 108, name HeartBtInt, type INT
+  int32 raw_data_length = 7;  // tag 95, name RawDataLength, type INT
+  string raw_data = 8;  // tag 96, name RawData, type DATA
+  bool reset_seq_num_flag = 9;  // tag 141, name ResetSeqNumFlag, type BOOLEAN
+  int32 max_message_size = 10;  // tag 383, name MaxMessageSize, type INT
+
+  // GROUPS
+  repeated NoMsgTypes no_msg_types = 11;
+}
+
+message QuoteRequest {
+  message NoRelatedSym {
+    message FieldPresence {
+      bool symbol = 1;
+      bool symbol_sfx = 2;
+      bool security_id = 3;
+      bool id_source = 4;
+      bool security_type = 5;
+      bool maturity_month_year = 6;
+      bool maturity_day = 7;
+      bool put_or_call = 8;
+      bool strike_price = 9;
+      bool opt_attribute = 10;
+      bool contract_multiplier = 11;
+      bool coupon_rate = 12;
+      bool security_exchange = 13;
+      bool issuer = 14;
+      bool encoded_issuer_len = 15;
+      bool encoded_issuer = 16;
+      bool security_desc = 17;
+      bool encoded_security_desc_len = 18;
+      bool encoded_security_desc = 19;
+      bool prev_close_px = 20;
+      bool quote_request_type = 21;
+      bool trading_session_id = 22;
+      bool side = 23;
+      bool order_qty = 24;
+      bool fut_sett_date = 25;
+      bool ord_type = 26;
+      bool fut_sett_date2 = 27;
+      bool order_qty2 = 28;
+      bool expire_time = 29;
+      bool transact_time = 30;
+      bool currency = 31;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string symbol = 2;  // tag 55, name Symbol, type STRING
+    string symbol_sfx = 3;  // tag 65, name SymbolSfx, type STRING
+    string security_id = 4;  // tag 48, name SecurityID, type STRING
+    string id_source = 5;  // tag 22, name IDSource, type STRING
+    string security_type = 6;  // tag 167, name SecurityType, type STRING
+    string maturity_month_year = 7;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+    int32 maturity_day = 8;  // tag 205, name MaturityDay, type DAYOFMONTH
+    int32 put_or_call = 9;  // tag 201, name PutOrCall, type INT
+    double strike_price = 10;  // tag 202, name StrikePrice, type PRICE
+    int32 opt_attribute = 11;  // tag 206, name OptAttribute, type CHAR
+    double contract_multiplier = 12;  // tag 231, name ContractMultiplier, type FLOAT
+    double coupon_rate = 13;  // tag 223, name CouponRate, type FLOAT
+    string security_exchange = 14;  // tag 207, name SecurityExchange, type EXCHANGE
+    string issuer = 15;  // tag 106, name Issuer, type STRING
+    int32 encoded_issuer_len = 16;  // tag 348, name EncodedIssuerLen, type INT
+    string encoded_issuer = 17;  // tag 349, name EncodedIssuer, type DATA
+    string security_desc = 18;  // tag 107, name SecurityDesc, type STRING
+    int32 encoded_security_desc_len = 19;  // tag 350, name EncodedSecurityDescLen, type INT
+    string encoded_security_desc = 20;  // tag 351, name EncodedSecurityDesc, type DATA
+    double prev_close_px = 21;  // tag 140, name PrevClosePx, type PRICE
+    int32 quote_request_type = 22;  // tag 303, name QuoteRequestType, type INT
+    string trading_session_id = 23;  // tag 336, name TradingSessionID, type STRING
+    int32 side = 24;  // tag 54, name Side, type CHAR
+    double order_qty = 25;  // tag 38, name OrderQty, type QTY
+    string fut_sett_date = 26;  // tag 64, name FutSettDate, type LOCALMKTDATE
+    int32 ord_type = 27;  // tag 40, name OrdType, type CHAR
+    string fut_sett_date2 = 28;  // tag 193, name FutSettDate2, type LOCALMKTDATE
+    double order_qty2 = 29;  // tag 192, name OrderQty2, type QTY
+    uint64 expire_time = 30;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+    uint64 transact_time = 31;  // tag 60, name TransactTime, type UTCTIMESTAMP
+    string currency = 32;  // tag 15, name Currency, type CURRENCY
+  }
+
+  message FieldPresence {
+    bool quote_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string quote_req_id = 5;  // tag 131, name QuoteReqID, type STRING
+
+  // GROUPS
+  repeated NoRelatedSym no_related_sym = 6;
+}
+
+message QuoteCancel {
+  message NoQuoteEntries {
+    message FieldPresence {
+      bool symbol = 1;
+      bool symbol_sfx = 2;
+      bool security_id = 3;
+      bool id_source = 4;
+      bool security_type = 5;
+      bool maturity_month_year = 6;
+      bool maturity_day = 7;
+      bool put_or_call = 8;
+      bool strike_price = 9;
+      bool opt_attribute = 10;
+      bool contract_multiplier = 11;
+      bool coupon_rate = 12;
+      bool security_exchange = 13;
+      bool issuer = 14;
+      bool encoded_issuer_len = 15;
+      bool encoded_issuer = 16;
+      bool security_desc = 17;
+      bool encoded_security_desc_len = 18;
+      bool encoded_security_desc = 19;
+      bool underlying_symbol = 20;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string symbol = 2;  // tag 55, name Symbol, type STRING
+    string symbol_sfx = 3;  // tag 65, name SymbolSfx, type STRING
+    string security_id = 4;  // tag 48, name SecurityID, type STRING
+    string id_source = 5;  // tag 22, name IDSource, type STRING
+    string security_type = 6;  // tag 167, name SecurityType, type STRING
+    string maturity_month_year = 7;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+    int32 maturity_day = 8;  // tag 205, name MaturityDay, type DAYOFMONTH
+    int32 put_or_call = 9;  // tag 201, name PutOrCall, type INT
+    double strike_price = 10;  // tag 202, name StrikePrice, type PRICE
+    int32 opt_attribute = 11;  // tag 206, name OptAttribute, type CHAR
+    double contract_multiplier = 12;  // tag 231, name ContractMultiplier, type FLOAT
+    double coupon_rate = 13;  // tag 223, name CouponRate, type FLOAT
+    string security_exchange = 14;  // tag 207, name SecurityExchange, type EXCHANGE
+    string issuer = 15;  // tag 106, name Issuer, type STRING
+    int32 encoded_issuer_len = 16;  // tag 348, name EncodedIssuerLen, type INT
+    string encoded_issuer = 17;  // tag 349, name EncodedIssuer, type DATA
+    string security_desc = 18;  // tag 107, name SecurityDesc, type STRING
+    int32 encoded_security_desc_len = 19;  // tag 350, name EncodedSecurityDescLen, type INT
+    string encoded_security_desc = 20;  // tag 351, name EncodedSecurityDesc, type DATA
+    string underlying_symbol = 21;  // tag 311, name UnderlyingSymbol, type STRING
+  }
+
+  message FieldPresence {
+    bool quote_req_id = 1;
+    bool quote_id = 2;
+    bool quote_cancel_type = 3;
+    bool quote_response_level = 4;
+    bool trading_session_id = 5;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string quote_req_id = 5;  // tag 131, name QuoteReqID, type STRING
+  string quote_id = 6;  // tag 117, name QuoteID, type STRING
+  int32 quote_cancel_type = 7;  // tag 298, name QuoteCancelType, type INT
+  int32 quote_response_level = 8;  // tag 301, name QuoteResponseLevel, type INT
+  string trading_session_id = 9;  // tag 336, name TradingSessionID, type STRING
+
+  // GROUPS
+  repeated NoQuoteEntries no_quote_entries = 10;
+}
+
+message OrderCancelRequest {
+  message FieldPresence {
+    bool orig_cl_ord_id = 1;
+    bool order_id = 2;
+    bool cl_ord_id = 3;
+    bool list_id = 4;
+    bool account = 5;
+    bool client_id = 6;
+    bool exec_broker = 7;
+    bool symbol = 8;
+    bool symbol_sfx = 9;
+    bool security_id = 10;
+    bool id_source = 11;
+    bool security_type = 12;
+    bool maturity_month_year = 13;
+    bool maturity_day = 14;
+    bool put_or_call = 15;
+    bool strike_price = 16;
+    bool opt_attribute = 17;
+    bool contract_multiplier = 18;
+    bool coupon_rate = 19;
+    bool security_exchange = 20;
+    bool issuer = 21;
+    bool encoded_issuer_len = 22;
+    bool encoded_issuer = 23;
+    bool security_desc = 24;
+    bool encoded_security_desc_len = 25;
+    bool encoded_security_desc = 26;
+    bool side = 27;
+    bool transact_time = 28;
+    bool order_qty = 29;
+    bool cash_order_qty = 30;
+    bool compliance_id = 31;
+    bool solicited_flag = 32;
+    bool text = 33;
+    bool encoded_text_len = 34;
+    bool encoded_text = 35;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string orig_cl_ord_id = 5;  // tag 41, name OrigClOrdID, type STRING
+  string order_id = 6;  // tag 37, name OrderID, type STRING
+  string cl_ord_id = 7;  // tag 11, name ClOrdID, type STRING
+  string list_id = 8;  // tag 66, name ListID, type STRING
+  string account = 9;  // tag 1, name Account, type STRING
+  string client_id = 10;  // tag 109, name ClientID, type STRING
+  string exec_broker = 11;  // tag 76, name ExecBroker, type STRING
+  string symbol = 12;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 13;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 14;  // tag 48, name SecurityID, type STRING
+  string id_source = 15;  // tag 22, name IDSource, type STRING
+  string security_type = 16;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 17;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 18;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 19;  // tag 201, name PutOrCall, type INT
+  double strike_price = 20;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 21;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 22;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 23;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 24;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 25;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 26;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 27;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 28;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 29;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 30;  // tag 351, name EncodedSecurityDesc, type DATA
+  int32 side = 31;  // tag 54, name Side, type CHAR
+  uint64 transact_time = 32;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  double order_qty = 33;  // tag 38, name OrderQty, type QTY
+  double cash_order_qty = 34;  // tag 152, name CashOrderQty, type QTY
+  string compliance_id = 35;  // tag 376, name ComplianceID, type STRING
+  bool solicited_flag = 36;  // tag 377, name SolicitedFlag, type BOOLEAN
+  string text = 37;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 38;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 39;  // tag 355, name EncodedText, type DATA
+}
+
+message TestRequest {
+  message FieldPresence {
+    bool test_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string test_req_id = 5;  // tag 112, name TestReqID, type STRING
+}
+
+message Quote {
+  message FieldPresence {
+    bool quote_req_id = 1;
+    bool quote_id = 2;
+    bool quote_response_level = 3;
+    bool trading_session_id = 4;
+    bool symbol = 5;
+    bool symbol_sfx = 6;
+    bool security_id = 7;
+    bool id_source = 8;
+    bool security_type = 9;
+    bool maturity_month_year = 10;
+    bool maturity_day = 11;
+    bool put_or_call = 12;
+    bool strike_price = 13;
+    bool opt_attribute = 14;
+    bool contract_multiplier = 15;
+    bool coupon_rate = 16;
+    bool security_exchange = 17;
+    bool issuer = 18;
+    bool encoded_issuer_len = 19;
+    bool encoded_issuer = 20;
+    bool security_desc = 21;
+    bool encoded_security_desc_len = 22;
+    bool encoded_security_desc = 23;
+    bool bid_px = 24;
+    bool offer_px = 25;
+    bool bid_size = 26;
+    bool offer_size = 27;
+    bool valid_until_time = 28;
+    bool bid_spot_rate = 29;
+    bool offer_spot_rate = 30;
+    bool bid_forward_points = 31;
+    bool offer_forward_points = 32;
+    bool transact_time = 33;
+    bool fut_sett_date = 34;
+    bool ord_type = 35;
+    bool fut_sett_date2 = 36;
+    bool order_qty2 = 37;
+    bool currency = 38;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string quote_req_id = 5;  // tag 131, name QuoteReqID, type STRING
+  string quote_id = 6;  // tag 117, name QuoteID, type STRING
+  int32 quote_response_level = 7;  // tag 301, name QuoteResponseLevel, type INT
+  string trading_session_id = 8;  // tag 336, name TradingSessionID, type STRING
+  string symbol = 9;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 10;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 11;  // tag 48, name SecurityID, type STRING
+  string id_source = 12;  // tag 22, name IDSource, type STRING
+  string security_type = 13;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 14;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 15;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 16;  // tag 201, name PutOrCall, type INT
+  double strike_price = 17;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 18;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 19;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 20;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 21;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 22;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 23;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 24;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 25;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 26;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 27;  // tag 351, name EncodedSecurityDesc, type DATA
+  double bid_px = 28;  // tag 132, name BidPx, type PRICE
+  double offer_px = 29;  // tag 133, name OfferPx, type PRICE
+  double bid_size = 30;  // tag 134, name BidSize, type QTY
+  double offer_size = 31;  // tag 135, name OfferSize, type QTY
+  uint64 valid_until_time = 32;  // tag 62, name ValidUntilTime, type UTCTIMESTAMP
+  double bid_spot_rate = 33;  // tag 188, name BidSpotRate, type PRICE
+  double offer_spot_rate = 34;  // tag 190, name OfferSpotRate, type PRICE
+  double bid_forward_points = 35;  // tag 189, name BidForwardPoints, type PRICEOFFSET
+  double offer_forward_points = 36;  // tag 191, name OfferForwardPoints, type PRICEOFFSET
+  uint64 transact_time = 37;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  string fut_sett_date = 38;  // tag 64, name FutSettDate, type LOCALMKTDATE
+  int32 ord_type = 39;  // tag 40, name OrdType, type CHAR
+  string fut_sett_date2 = 40;  // tag 193, name FutSettDate2, type LOCALMKTDATE
+  double order_qty2 = 41;  // tag 192, name OrderQty2, type QTY
+  string currency = 42;  // tag 15, name Currency, type CURRENCY
+}
+
+message Heartbeat {
+  message FieldPresence {
+    bool test_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string test_req_id = 5;  // tag 112, name TestReqID, type STRING
+}
+
+message OrderCancelReplaceRequest {
+  message NoAllocs {
+    message FieldPresence {
+      bool alloc_account = 1;
+      bool alloc_shares = 2;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string alloc_account = 2;  // tag 79, name AllocAccount, type STRING
+    double alloc_shares = 3;  // tag 80, name AllocShares, type QTY
+  }
+
+  message NoTradingSessions {
+    message FieldPresence {
+      bool trading_session_id = 1;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string trading_session_id = 2;  // tag 336, name TradingSessionID, type STRING
+  }
+
+  message FieldPresence {
+    bool order_id = 1;
+    bool client_id = 2;
+    bool exec_broker = 3;
+    bool orig_cl_ord_id = 4;
+    bool cl_ord_id = 5;
+    bool list_id = 6;
+    bool account = 7;
+    bool settlmnt_typ = 8;
+    bool fut_sett_date = 9;
+    bool handl_inst = 10;
+    bool exec_inst = 11;
+    bool min_qty = 12;
+    bool max_floor = 13;
+    bool ex_destination = 14;
+    bool symbol = 15;
+    bool symbol_sfx = 16;
+    bool security_id = 17;
+    bool id_source = 18;
+    bool security_type = 19;
+    bool maturity_month_year = 20;
+    bool maturity_day = 21;
+    bool put_or_call = 22;
+    bool strike_price = 23;
+    bool opt_attribute = 24;
+    bool contract_multiplier = 25;
+    bool coupon_rate = 26;
+    bool security_exchange = 27;
+    bool issuer = 28;
+    bool encoded_issuer_len = 29;
+    bool encoded_issuer = 30;
+    bool security_desc = 31;
+    bool encoded_security_desc_len = 32;
+    bool encoded_security_desc = 33;
+    bool side = 34;
+    bool transact_time = 35;
+    bool order_qty = 36;
+    bool cash_order_qty = 37;
+    bool ord_type = 38;
+    bool price = 39;
+    bool stop_px = 40;
+    bool peg_difference = 41;
+    bool discretion_inst = 42;
+    bool discretion_offset = 43;
+    bool compliance_id = 44;
+    bool solicited_flag = 45;
+    bool currency = 46;
+    bool time_in_force = 47;
+    bool effective_time = 48;
+    bool expire_date = 49;
+    bool expire_time = 50;
+    bool gt_booking_inst = 51;
+    bool commission = 52;
+    bool comm_type = 53;
+    bool rule80a = 54;
+    bool forex_req = 55;
+    bool settl_currency = 56;
+    bool text = 57;
+    bool encoded_text_len = 58;
+    bool encoded_text = 59;
+    bool fut_sett_date2 = 60;
+    bool order_qty2 = 61;
+    bool open_close = 62;
+    bool covered_or_uncovered = 63;
+    bool customer_or_firm = 64;
+    bool max_show = 65;
+    bool locate_reqd = 66;
+    bool clearing_firm = 67;
+    bool clearing_account = 68;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string order_id = 5;  // tag 37, name OrderID, type STRING
+  string client_id = 6;  // tag 109, name ClientID, type STRING
+  string exec_broker = 7;  // tag 76, name ExecBroker, type STRING
+  string orig_cl_ord_id = 8;  // tag 41, name OrigClOrdID, type STRING
+  string cl_ord_id = 9;  // tag 11, name ClOrdID, type STRING
+  string list_id = 10;  // tag 66, name ListID, type STRING
+  string account = 11;  // tag 1, name Account, type STRING
+  int32 settlmnt_typ = 12;  // tag 63, name SettlmntTyp, type CHAR
+  string fut_sett_date = 13;  // tag 64, name FutSettDate, type LOCALMKTDATE
+  int32 handl_inst = 14;  // tag 21, name HandlInst, type CHAR
+  string exec_inst = 15;  // tag 18, name ExecInst, type MULTIPLEVALUESTRING
+  double min_qty = 16;  // tag 110, name MinQty, type QTY
+  double max_floor = 17;  // tag 111, name MaxFloor, type QTY
+  string ex_destination = 18;  // tag 100, name ExDestination, type EXCHANGE
+  string symbol = 19;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 20;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 21;  // tag 48, name SecurityID, type STRING
+  string id_source = 22;  // tag 22, name IDSource, type STRING
+  string security_type = 23;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 24;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 25;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 26;  // tag 201, name PutOrCall, type INT
+  double strike_price = 27;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 28;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 29;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 30;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 31;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 32;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 33;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 34;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 35;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 36;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 37;  // tag 351, name EncodedSecurityDesc, type DATA
+  int32 side = 38;  // tag 54, name Side, type CHAR
+  uint64 transact_time = 39;  // tag 60, name TransactTime, type UTCTIMESTAMP
+  double order_qty = 40;  // tag 38, name OrderQty, type QTY
+  double cash_order_qty = 41;  // tag 152, name CashOrderQty, type QTY
+  int32 ord_type = 42;  // tag 40, name OrdType, type CHAR
+  double price = 43;  // tag 44, name Price, type PRICE
+  double stop_px = 44;  // tag 99, name StopPx, type PRICE
+  double peg_difference = 45;  // tag 211, name PegDifference, type PRICEOFFSET
+  int32 discretion_inst = 46;  // tag 388, name DiscretionInst, type CHAR
+  double discretion_offset = 47;  // tag 389, name DiscretionOffset, type PRICEOFFSET
+  string compliance_id = 48;  // tag 376, name ComplianceID, type STRING
+  bool solicited_flag = 49;  // tag 377, name SolicitedFlag, type BOOLEAN
+  string currency = 50;  // tag 15, name Currency, type CURRENCY
+  int32 time_in_force = 51;  // tag 59, name TimeInForce, type CHAR
+  uint64 effective_time = 52;  // tag 168, name EffectiveTime, type UTCTIMESTAMP
+  string expire_date = 53;  // tag 432, name ExpireDate, type LOCALMKTDATE
+  uint64 expire_time = 54;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+  int32 gt_booking_inst = 55;  // tag 427, name GTBookingInst, type INT
+  double commission = 56;  // tag 12, name Commission, type AMT
+  int32 comm_type = 57;  // tag 13, name CommType, type CHAR
+  int32 rule80a = 58;  // tag 47, name Rule80A, type CHAR
+  bool forex_req = 59;  // tag 121, name ForexReq, type BOOLEAN
+  string settl_currency = 60;  // tag 120, name SettlCurrency, type CURRENCY
+  string text = 61;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 62;  // tag 354, name EncodedTextLen, type INT
+  string encoded_text = 63;  // tag 355, name EncodedText, type DATA
+  string fut_sett_date2 = 64;  // tag 193, name FutSettDate2, type LOCALMKTDATE
+  double order_qty2 = 65;  // tag 192, name OrderQty2, type QTY
+  int32 open_close = 66;  // tag 77, name OpenClose, type CHAR
+  int32 covered_or_uncovered = 67;  // tag 203, name CoveredOrUncovered, type INT
+  int32 customer_or_firm = 68;  // tag 204, name CustomerOrFirm, type INT
+  double max_show = 69;  // tag 210, name MaxShow, type QTY
+  bool locate_reqd = 70;  // tag 114, name LocateReqd, type BOOLEAN
+  string clearing_firm = 71;  // tag 439, name ClearingFirm, type STRING
+  string clearing_account = 72;  // tag 440, name ClearingAccount, type STRING
+
+  // GROUPS
+  repeated NoAllocs no_allocs = 73;
+  repeated NoTradingSessions no_trading_sessions = 74;
+}
+
+message MarketDataSnapshotFullRefresh {
+  message NoMdEntries {
+    message FieldPresence {
+      bool md_entry_type = 1;
+      bool md_entry_px = 2;
+      bool currency = 3;
+      bool md_entry_size = 4;
+      bool md_entry_date = 5;
+      bool md_entry_time = 6;
+      bool tick_direction = 7;
+      bool md_mkt = 8;
+      bool trading_session_id = 9;
+      bool quote_condition = 10;
+      bool trade_condition = 11;
+      bool md_entry_originator = 12;
+      bool location_id = 13;
+      bool desk_id = 14;
+      bool open_close_settle_flag = 15;
+      bool time_in_force = 16;
+      bool expire_date = 17;
+      bool expire_time = 18;
+      bool min_qty = 19;
+      bool exec_inst = 20;
+      bool seller_days = 21;
+      bool order_id = 22;
+      bool quote_entry_id = 23;
+      bool md_entry_buyer = 24;
+      bool md_entry_seller = 25;
+      bool number_of_orders = 26;
+      bool md_entry_position_no = 27;
+      bool text = 28;
+      bool encoded_text_len = 29;
+      bool encoded_text = 30;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    int32 md_entry_type = 2;  // tag 269, name MDEntryType, type CHAR
+    double md_entry_px = 3;  // tag 270, name MDEntryPx, type PRICE
+    string currency = 4;  // tag 15, name Currency, type CURRENCY
+    double md_entry_size = 5;  // tag 271, name MDEntrySize, type QTY
+    uint64 md_entry_date = 6;  // tag 272, name MDEntryDate, type UTCDATE
+    uint64 md_entry_time = 7;  // tag 273, name MDEntryTime, type UTCTIMEONLY
+    int32 tick_direction = 8;  // tag 274, name TickDirection, type CHAR
+    string md_mkt = 9;  // tag 275, name MDMkt, type EXCHANGE
+    string trading_session_id = 10;  // tag 336, name TradingSessionID, type STRING
+    string quote_condition = 11;  // tag 276, name QuoteCondition, type MULTIPLEVALUESTRING
+    string trade_condition = 12;  // tag 277, name TradeCondition, type MULTIPLEVALUESTRING
+    string md_entry_originator = 13;  // tag 282, name MDEntryOriginator, type STRING
+    string location_id = 14;  // tag 283, name LocationID, type STRING
+    string desk_id = 15;  // tag 284, name DeskID, type STRING
+    int32 open_close_settle_flag = 16;  // tag 286, name OpenCloseSettleFlag, type CHAR
+    int32 time_in_force = 17;  // tag 59, name TimeInForce, type CHAR
+    string expire_date = 18;  // tag 432, name ExpireDate, type LOCALMKTDATE
+    uint64 expire_time = 19;  // tag 126, name ExpireTime, type UTCTIMESTAMP
+    double min_qty = 20;  // tag 110, name MinQty, type QTY
+    string exec_inst = 21;  // tag 18, name ExecInst, type MULTIPLEVALUESTRING
+    int32 seller_days = 22;  // tag 287, name SellerDays, type INT
+    string order_id = 23;  // tag 37, name OrderID, type STRING
+    string quote_entry_id = 24;  // tag 299, name QuoteEntryID, type STRING
+    string md_entry_buyer = 25;  // tag 288, name MDEntryBuyer, type STRING
+    string md_entry_seller = 26;  // tag 289, name MDEntrySeller, type STRING
+    int32 number_of_orders = 27;  // tag 346, name NumberOfOrders, type INT
+    int32 md_entry_position_no = 28;  // tag 290, name MDEntryPositionNo, type INT
+    string text = 29;  // tag 58, name Text, type STRING
+    int32 encoded_text_len = 30;  // tag 354, name EncodedTextLen, type INT
+    string encoded_text = 31;  // tag 355, name EncodedText, type DATA
+  }
+
+  message FieldPresence {
+    bool md_req_id = 1;
+    bool symbol = 2;
+    bool symbol_sfx = 3;
+    bool security_id = 4;
+    bool id_source = 5;
+    bool security_type = 6;
+    bool maturity_month_year = 7;
+    bool maturity_day = 8;
+    bool put_or_call = 9;
+    bool strike_price = 10;
+    bool opt_attribute = 11;
+    bool contract_multiplier = 12;
+    bool coupon_rate = 13;
+    bool security_exchange = 14;
+    bool issuer = 15;
+    bool encoded_issuer_len = 16;
+    bool encoded_issuer = 17;
+    bool security_desc = 18;
+    bool encoded_security_desc_len = 19;
+    bool encoded_security_desc = 20;
+    bool financial_status = 21;
+    bool corporate_action = 22;
+    bool total_volume_traded = 23;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string md_req_id = 5;  // tag 262, name MDReqID, type STRING
+  string symbol = 6;  // tag 55, name Symbol, type STRING
+  string symbol_sfx = 7;  // tag 65, name SymbolSfx, type STRING
+  string security_id = 8;  // tag 48, name SecurityID, type STRING
+  string id_source = 9;  // tag 22, name IDSource, type STRING
+  string security_type = 10;  // tag 167, name SecurityType, type STRING
+  string maturity_month_year = 11;  // tag 200, name MaturityMonthYear, type MONTHYEAR
+  int32 maturity_day = 12;  // tag 205, name MaturityDay, type DAYOFMONTH
+  int32 put_or_call = 13;  // tag 201, name PutOrCall, type INT
+  double strike_price = 14;  // tag 202, name StrikePrice, type PRICE
+  int32 opt_attribute = 15;  // tag 206, name OptAttribute, type CHAR
+  double contract_multiplier = 16;  // tag 231, name ContractMultiplier, type FLOAT
+  double coupon_rate = 17;  // tag 223, name CouponRate, type FLOAT
+  string security_exchange = 18;  // tag 207, name SecurityExchange, type EXCHANGE
+  string issuer = 19;  // tag 106, name Issuer, type STRING
+  int32 encoded_issuer_len = 20;  // tag 348, name EncodedIssuerLen, type INT
+  string encoded_issuer = 21;  // tag 349, name EncodedIssuer, type DATA
+  string security_desc = 22;  // tag 107, name SecurityDesc, type STRING
+  int32 encoded_security_desc_len = 23;  // tag 350, name EncodedSecurityDescLen, type INT
+  string encoded_security_desc = 24;  // tag 351, name EncodedSecurityDesc, type DATA
+  int32 financial_status = 25;  // tag 291, name FinancialStatus, type CHAR
+  int32 corporate_action = 26;  // tag 292, name CorporateAction, type CHAR
+  double total_volume_traded = 27;  // tag 387, name TotalVolumeTraded, type QTY
+
+  // GROUPS
+  repeated NoMdEntries no_md_entries = 28;
+}
+

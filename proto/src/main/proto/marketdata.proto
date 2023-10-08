@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package marketdata.proto;
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "garden_leave.marketdata.proto";
+option java_outer_classname = "MarketDataProtos";
+
+import "google/protobuf/timestamp.proto";
+
+message Quote {
+    google.protobuf.Timestamp timestamp                 = 1;
+    int64 instrument_id                                 = 2;
+    int32 bid_size                                      = 3;
+    int32 ask_size                                      = 4;
+    double bid_price                                    = 5;
+    double ask_price                                    = 6;
+    double bid_yield                                    = 7;
+    double ask_yield                                    = 8;
+    double bid_spread                                   = 9;
+    double ask_spread                                   = 10;
+    double bid_gspread                                  = 11;
+    double ask_gspread                                  = 12;
+}
+
+message Trade {
+    google.protobuf.Timestamp timestamp                 = 1;
+    int64 instrument_id                                 = 2;
+    int32 trade_size                                    = 3;
+    double trade_price                                  = 4;
+    double trade_yield                                  = 5;
+    double trade_spread                                 = 6;
+    double trade_gspread                                = 7;
+}
+
+message MarketDataRecord {
+    google.protobuf.Timestamp timestamp                 = 1;
+    oneof data {
+        Quote quote                                     = 2;
+        Trade trade                                     = 3;
+    }
+}

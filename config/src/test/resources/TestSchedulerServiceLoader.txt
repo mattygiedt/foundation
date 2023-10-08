@@ -1,0 +1,93 @@
+instance {
+  service {
+    name: "dev.scheduler"
+    config_key {
+      environment: "dev"
+      service: "scheduler"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+  }
+  task {
+    name: "cron_task"
+    task_class: "garden_leave.scheduler.task.NullTask"
+    arg: "message='This is a message'"
+    arg: "count=1"
+    constraint {
+      name: "cron_task.constraint"
+      limit: 1
+      wait_for {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+    cron {
+      crontab: "15 * * * *"
+      parse_with_seconds: false
+    }
+  }
+  task {
+    name: "fixed_time_task"
+    task_class: "garden_leave.scheduler.task.NullTask"
+    arg: "message='This is a message'"
+    arg: "count=1"
+    constraint {
+      name: "fixed_time_task.constraint"
+      limit: 1
+      wait_for {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+    fixed_time {
+      time: "12:00:00"
+    }
+  }
+  task {
+    name: "fixed_delay_task"
+    task_class: "garden_leave.scheduler.task.NullTask"
+    execution_limit: 3
+    arg: "message='This is a message'"
+    arg: "count=1"
+    constraint {
+      name: "fixed_delay_task.constraint"
+      limit: 1
+      wait_for {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+    fixed_delay {
+      initial_delay {
+        duration: 0
+        chrono_unit: "MILLIS"
+      }
+      period {
+        duration: 150
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "one_shot_task"
+    task_class: "garden_leave.scheduler.task.NullTask"
+    arg: "message='This is a message'"
+    arg: "count=1"
+    constraint {
+      name: "one_shot_task.constraint"
+      limit: 1
+      wait_for {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+instance {
+  service {
+    name: "dev.gateway.example-fix42.client"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "example-fix42"
+      category: "client"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/example/client.fix42.properties"
+}
+instance {
+  service {
+    name: "dev.gateway.example-fix42.venue"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "example-fix42"
+      category: "venue"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/example/venue.fix42.properties"
+}
+
+instance {
+  service {
+    name: "dev.gateway.example-fix44.client"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "example-fix44"
+      category: "client"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/example/client.fix44.properties"
+}
+instance {
+  service {
+    name: "dev.gateway.example-fix44.venue"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "example-fix44"
+      category: "venue"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/example/venue.fix44.properties"
+}
+
+instance {
+  service {
+    name: "dev.gateway.internalizer-fix42.client"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "internalizer-fix42"
+      category: "client"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/internalizer/client.fix42.properties"
+}
+instance {
+  service {
+    name: "dev.gateway.internalizer-fix42.venue"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "internalizer-fix42"
+      category: "venue"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway/internalizer/venue.fix42.properties"
+}

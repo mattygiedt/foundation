@@ -1,0 +1,31 @@
+<configuration packagingData="true">
+
+  <!--
+    https://www.baeldung.com/logback
+  -->
+  <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+  <!--
+    Note: ${LOG_DIR} and ${LOG_FILE} are set programatically in BaseService.
+          to pass these into your application, use -D on the command line:
+
+      -DLOG_TYPE=ROLLING_FILE -DLOG_DIR=/workspaces/garden_leave/log -DLOG_FILE=CacheService
+  -->
+
+  <appender name="FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_DIR}/${LOG_FILE}.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_DIR}/${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="FILE-APPENDER" />
+  </root>
+
+</configuration>
+
+

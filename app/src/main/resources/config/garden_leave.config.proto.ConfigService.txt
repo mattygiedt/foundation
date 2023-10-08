@@ -1,0 +1,68 @@
+instance {
+  service {
+    name: "local.config"
+    config_key {
+      environment: "local"
+      service: "config"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+  }
+  port: 0
+  service_config {
+    loader_class: "garden_leave.config.loaders.marketdata.MarketDataServiceLoader"
+    from_resource: "config/garden_leave.config.proto.MarketDataService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.webapp.WebappServiceLoader"
+    from_resource: "config/garden_leave.config.proto.WebappService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.scheduler.SchedulerServiceLoader"
+    from_resource: "config/garden_leave.config.proto.SchedulerService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.gateway.GatewayServiceLoader"
+    from_resource: "config/garden_leave.config.proto.GatewayService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.internalizer.InternalizerServiceLoader"
+    from_resource: "config/garden_leave.config.proto.InternalizerService.txt"
+  }
+}
+instance {
+  service {
+    name: "dev.config"
+    config_key {
+      environment: "dev"
+      service: "config"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+  }
+  port: 8080
+  service_config {
+    loader_class: "garden_leave.config.loaders.marketdata.MarketDataServiceLoader"
+    from_resource: "config/garden_leave.config.proto.MarketDataService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.webapp.WebappServiceLoader"
+    from_resource: "config/garden_leave.config.proto.WebappService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.scheduler.SchedulerServiceLoader"
+    from_resource: "config/garden_leave.config.proto.SchedulerService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.gateway.GatewayServiceLoader"
+    from_resource: "config/garden_leave.config.proto.GatewayService.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.internalizer.InternalizerServiceLoader"
+    from_resource: "config/garden_leave.config.proto.InternalizerService.txt"
+  }
+}

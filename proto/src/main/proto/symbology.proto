@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package symbology.proto;
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "garden_leave.symbology.proto";
+option java_outer_classname = "SymbologyProtos";
+
+import "google/protobuf/timestamp.proto";
+
+enum InstrumentType {
+  UNKNOWN_INSTRUMENT                                = 0;
+  EQUITY_INSTRUMENT                                 = 1;
+  BOND_INSTRUMENT                                   = 2;
+  DERIVATIVE_INSTRUMENT                             = 3;
+}
+
+message InstrumentRecord {
+    google.protobuf.Timestamp timestamp             = 1;
+    int64 instrument_id                             = 2;
+    InstrumentType instrument_type                  = 3;
+    string isin                                     = 4;
+    string figi                                     = 5;
+    string symbol                                   = 6;
+    string ticker                                   = 7;
+    string short_name                               = 8;
+    string full_name                                = 9;
+    string display_name                             = 10;
+}

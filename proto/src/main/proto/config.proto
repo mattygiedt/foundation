@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package config.proto;
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "garden_leave.config.proto";
+option java_outer_classname = "ConfigProtos";
+
+message ConfigKey {
+    string environment                                      = 1;
+    string service                                          = 2;
+    string instance                                         = 3;
+    string category                                         = 4;
+}
+
+message Logback {
+    string log_type                                         = 1;
+    string log_level                                        = 2;
+    string log_dir                                          = 3;
+    string log_file                                         = 4;
+}
+
+message Service {
+    string name                                             = 1;
+    ConfigKey config_key                                    = 2;
+    Logback logback                                         = 3;
+    string banner                                           = 4;
+}
+
+message SocketAddress {
+    string name                                             = 1;
+    string address                                          = 2;
+    uint32 port                                             = 3;
+}
+
+message WaitFor {
+    uint64 duration                                         = 1;
+    string chrono_unit                                      = 2;
+}
+
+message TaskConstraint {
+    string name                                             = 1;
+    uint32 limit                                            = 2;
+    WaitFor wait_for                                        = 3;
+}
+
+message ScheduledTask {
+    message Cron {
+        string crontab                                      = 1;
+        bool parse_with_seconds                             = 2;
+    }
+
+    message FixedTime {
+        string time                                         = 1;
+        string time_zone                                    = 2;
+    }
+
+    message FixedDelay {
+        WaitFor initial_delay                               = 1;
+        WaitFor period                                      = 2;
+    }
+
+    message OneShot {
+        WaitFor initial_delay                               = 1;
+    }
+
+    string name                                             = 1;
+    string task_class                                       = 2;
+    uint32 execution_limit                                  = 3;
+    repeated string arg                                     = 4;
+    repeated TaskConstraint constraint                      = 5;
+
+    oneof schedule {
+        Cron cron                                           = 100;
+        FixedTime fixed_time                                = 101;
+        FixedDelay fixed_delay                              = 102;
+        OneShot one_shot                                    = 103;
+    }
+}
+
+message MulticastServer {
+    string network_interface                                = 1;
+    repeated SocketAddress group_address                    = 2;
+}
+
+message ServiceConfiguration {
+    string loader_class                                     = 1;
+    oneof source {
+        string from_string                                  = 2;
+        string from_file                                    = 3;
+        string from_resource                                = 4;
+    }
+}
+
+message ConfigService {
+    message Instance {
+        Service service                                     = 1;
+        uint32 port                                         = 2;
+        repeated ServiceConfiguration service_config        = 3;
+    }
+
+    repeated Instance instance                              = 1;
+}
+
+message WebappService {
+    message Instance {
+        Service service                                     = 1;
+        uint32 port                                         = 2;
+        string static_file_path                             = 3;
+        string endpoint_class                               = 4;
+    }
+
+    repeated Instance instance                              = 1;
+}
+
+message MarketDataService {
+    message Instance {
+        Service service                                     = 1;
+        MulticastServer receiver                            = 2;
+        MulticastServer publisher                           = 3;
+    }
+
+    repeated Instance instance                              = 1;
+}
+
+message SchedulerService {
+    message Instance {
+        Service service                                     = 1;
+        repeated ScheduledTask task                         = 2;
+    }
+
+    repeated Instance instance                              = 1;
+}
+
+message GatewayService {
+    message Instance {
+        Service service                                     = 1;
+        string session_settings_file_path                   = 2;
+        string data_dictionary_file_path                    = 3;
+    }
+
+    repeated Instance instance                              = 1;
+}
+
+message InternalizerService {
+    message Instance {
+        Service service                                     = 1;
+        uint32 port                                         = 2;
+    }
+
+    repeated Instance instance                              = 1;
+}

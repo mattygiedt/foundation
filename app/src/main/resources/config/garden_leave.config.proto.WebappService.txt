@@ -1,0 +1,38 @@
+instance {
+  service {
+    name: "dev.webapp.sweeper.v1"
+    config_key {
+      environment: "dev"
+      service: "webapp"
+      instance: "sweeper"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/webapp.txt"
+  }
+  port: 9099
+  static_file_path: "/public/sweeper"
+  endpoint_class: "garden_leave.webapp.sweeper.SweeperEndpoint"
+}
+instance {
+  service {
+    name: "dev.webapp.tape.v1"
+    config_key {
+      environment: "dev"
+      service: "webapp"
+      instance: "tape"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/webapp.txt"
+  }
+  port: 9098
+  static_file_path: "/public/tape"
+  endpoint_class: "garden_leave.webapp.tape.TapeEndpoint"
+}

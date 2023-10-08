@@ -1,0 +1,284 @@
+syntax = "proto3";
+
+//
+// THIS FILE WAS AUTOMATICALLY GENERATED -- DO NOT EDIT!!!
+//
+// 2023-05-31 - 00:26:00.967167400
+//
+
+package fixt11.proto;
+option java_multiple_files = false;
+option java_package = "garden_leave.fixt11.proto";
+option java_outer_classname = "FIXT11Protos";
+option optimize_for = LITE_RUNTIME;
+
+import "google/protobuf/timestamp.proto";
+
+message Header {
+  message FieldPresence {
+    bool begin_string = 1;
+    bool body_length = 2;
+    bool msg_type = 3;
+    bool appl_ver_id = 4;
+    bool appl_ext_id = 5;
+    bool cstm_appl_ver_id = 6;
+    bool sender_comp_id = 7;
+    bool target_comp_id = 8;
+    bool on_behalf_of_comp_id = 9;
+    bool deliver_to_comp_id = 10;
+    bool secure_data_len = 11;
+    bool secure_data = 12;
+    bool msg_seq_num = 13;
+    bool sender_sub_id = 14;
+    bool sender_location_id = 15;
+    bool target_sub_id = 16;
+    bool target_location_id = 17;
+    bool on_behalf_of_sub_id = 18;
+    bool on_behalf_of_location_id = 19;
+    bool deliver_to_sub_id = 20;
+    bool deliver_to_location_id = 21;
+    bool poss_dup_flag = 22;
+    bool poss_resend = 23;
+    bool sending_time = 24;
+    bool orig_sending_time = 25;
+    bool xml_data_len = 26;
+    bool xml_data = 27;
+    bool message_encoding = 28;
+    bool last_msg_seq_num_processed = 29;
+  }
+
+  // FIELDS
+  FieldPresence field_presence = 1;
+  string begin_string = 2;  // tag 8, name BeginString, type STRING
+  int32 body_length = 3;  // tag 9, name BodyLength, type LENGTH
+  string msg_type = 4;  // tag 35, name MsgType, type STRING
+  string appl_ver_id = 5;  // tag 1128, name ApplVerID, type STRING
+  int32 appl_ext_id = 6;  // tag 1156, name ApplExtID, type INT
+  string cstm_appl_ver_id = 7;  // tag 1129, name CstmApplVerID, type STRING
+  string sender_comp_id = 8;  // tag 49, name SenderCompID, type STRING
+  string target_comp_id = 9;  // tag 56, name TargetCompID, type STRING
+  string on_behalf_of_comp_id = 10;  // tag 115, name OnBehalfOfCompID, type STRING
+  string deliver_to_comp_id = 11;  // tag 128, name DeliverToCompID, type STRING
+  int32 secure_data_len = 12;  // tag 90, name SecureDataLen, type LENGTH
+  string secure_data = 13;  // tag 91, name SecureData, type DATA
+  int32 msg_seq_num = 14;  // tag 34, name MsgSeqNum, type SEQNUM
+  string sender_sub_id = 15;  // tag 50, name SenderSubID, type STRING
+  string sender_location_id = 16;  // tag 142, name SenderLocationID, type STRING
+  string target_sub_id = 17;  // tag 57, name TargetSubID, type STRING
+  string target_location_id = 18;  // tag 143, name TargetLocationID, type STRING
+  string on_behalf_of_sub_id = 19;  // tag 116, name OnBehalfOfSubID, type STRING
+  string on_behalf_of_location_id = 20;  // tag 144, name OnBehalfOfLocationID, type STRING
+  string deliver_to_sub_id = 21;  // tag 129, name DeliverToSubID, type STRING
+  string deliver_to_location_id = 22;  // tag 145, name DeliverToLocationID, type STRING
+  bool poss_dup_flag = 23;  // tag 43, name PossDupFlag, type BOOLEAN
+  bool poss_resend = 24;  // tag 97, name PossResend, type BOOLEAN
+  uint64 sending_time = 25;  // tag 52, name SendingTime, type UTCTIMESTAMP
+  uint64 orig_sending_time = 26;  // tag 122, name OrigSendingTime, type UTCTIMESTAMP
+  int32 xml_data_len = 27;  // tag 212, name XmlDataLen, type LENGTH
+  string xml_data = 28;  // tag 213, name XmlData, type DATA
+  string message_encoding = 29;  // tag 347, name MessageEncoding, type STRING
+  int32 last_msg_seq_num_processed = 30;  // tag 369, name LastMsgSeqNumProcessed, type SEQNUM
+}
+
+// MESSAGES
+//
+message Logon {
+  message NoMsgTypes {
+    message FieldPresence {
+      bool ref_msg_type = 1;
+      bool msg_direction = 2;
+      bool ref_appl_ver_id = 3;
+      bool ref_appl_ext_id = 4;
+      bool ref_cstm_appl_ver_id = 5;
+      bool default_ver_indicator = 6;
+    }
+
+    // FIELDS
+    FieldPresence field_presence = 1;
+    string ref_msg_type = 2;  // tag 372, name RefMsgType, type STRING
+    int32 msg_direction = 3;  // tag 385, name MsgDirection, type CHAR
+    string ref_appl_ver_id = 4;  // tag 1130, name RefApplVerID, type STRING
+    int32 ref_appl_ext_id = 5;  // tag 1406, name RefApplExtID, type INT
+    string ref_cstm_appl_ver_id = 6;  // tag 1131, name RefCstmApplVerID, type STRING
+    bool default_ver_indicator = 7;  // tag 1410, name DefaultVerIndicator, type BOOLEAN
+  }
+
+  message FieldPresence {
+    bool encrypt_method = 1;
+    bool heart_bt_int = 2;
+    bool raw_data_length = 3;
+    bool raw_data = 4;
+    bool reset_seq_num_flag = 5;
+    bool next_expected_msg_seq_num = 6;
+    bool max_message_size = 7;
+    bool test_message_indicator = 8;
+    bool username = 9;
+    bool password = 10;
+    bool new_password = 11;
+    bool encrypted_password_method = 12;
+    bool encrypted_password_len = 13;
+    bool encrypted_password = 14;
+    bool encrypted_new_password_len = 15;
+    bool encrypted_new_password = 16;
+    bool session_status = 17;
+    bool default_appl_ver_id = 18;
+    bool default_appl_ext_id = 19;
+    bool default_cstm_appl_ver_id = 20;
+    bool text = 21;
+    bool encoded_text_len = 22;
+    bool encoded_text = 23;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 encrypt_method = 5;  // tag 98, name EncryptMethod, type INT
+  int32 heart_bt_int = 6;  // tag 108, name HeartBtInt, type INT
+  int32 raw_data_length = 7;  // tag 95, name RawDataLength, type LENGTH
+  string raw_data = 8;  // tag 96, name RawData, type DATA
+  bool reset_seq_num_flag = 9;  // tag 141, name ResetSeqNumFlag, type BOOLEAN
+  int32 next_expected_msg_seq_num = 10;  // tag 789, name NextExpectedMsgSeqNum, type SEQNUM
+  int32 max_message_size = 11;  // tag 383, name MaxMessageSize, type LENGTH
+  bool test_message_indicator = 12;  // tag 464, name TestMessageIndicator, type BOOLEAN
+  string username = 13;  // tag 553, name Username, type STRING
+  string password = 14;  // tag 554, name Password, type STRING
+  string new_password = 15;  // tag 925, name NewPassword, type STRING
+  int32 encrypted_password_method = 16;  // tag 1400, name EncryptedPasswordMethod, type INT
+  int32 encrypted_password_len = 17;  // tag 1401, name EncryptedPasswordLen, type LENGTH
+  string encrypted_password = 18;  // tag 1402, name EncryptedPassword, type DATA
+  int32 encrypted_new_password_len = 19;  // tag 1403, name EncryptedNewPasswordLen, type LENGTH
+  string encrypted_new_password = 20;  // tag 1404, name EncryptedNewPassword, type DATA
+  int32 session_status = 21;  // tag 1409, name SessionStatus, type INT
+  string default_appl_ver_id = 22;  // tag 1137, name DefaultApplVerID, type STRING
+  int32 default_appl_ext_id = 23;  // tag 1407, name DefaultApplExtID, type INT
+  string default_cstm_appl_ver_id = 24;  // tag 1408, name DefaultCstmApplVerID, type STRING
+  string text = 25;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 26;  // tag 354, name EncodedTextLen, type LENGTH
+  string encoded_text = 27;  // tag 355, name EncodedText, type DATA
+
+  // GROUPS
+  repeated NoMsgTypes no_msg_types = 28;
+}
+
+message Reject {
+  message FieldPresence {
+    bool ref_seq_num = 1;
+    bool ref_tag_id = 2;
+    bool ref_msg_type = 3;
+    bool ref_appl_ver_id = 4;
+    bool ref_appl_ext_id = 5;
+    bool ref_cstm_appl_ver_id = 6;
+    bool session_reject_reason = 7;
+    bool text = 8;
+    bool encoded_text_len = 9;
+    bool encoded_text = 10;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 ref_seq_num = 5;  // tag 45, name RefSeqNum, type SEQNUM
+  int32 ref_tag_id = 6;  // tag 371, name RefTagID, type INT
+  string ref_msg_type = 7;  // tag 372, name RefMsgType, type STRING
+  string ref_appl_ver_id = 8;  // tag 1130, name RefApplVerID, type STRING
+  int32 ref_appl_ext_id = 9;  // tag 1406, name RefApplExtID, type INT
+  string ref_cstm_appl_ver_id = 10;  // tag 1131, name RefCstmApplVerID, type STRING
+  int32 session_reject_reason = 11;  // tag 373, name SessionRejectReason, type INT
+  string text = 12;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 13;  // tag 354, name EncodedTextLen, type LENGTH
+  string encoded_text = 14;  // tag 355, name EncodedText, type DATA
+}
+
+message SequenceReset {
+  message FieldPresence {
+    bool gap_fill_flag = 1;
+    bool new_seq_no = 2;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  bool gap_fill_flag = 5;  // tag 123, name GapFillFlag, type BOOLEAN
+  int32 new_seq_no = 6;  // tag 36, name NewSeqNo, type SEQNUM
+}
+
+message Heartbeat {
+  message FieldPresence {
+    bool test_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string test_req_id = 5;  // tag 112, name TestReqID, type STRING
+}
+
+message Logout {
+  message FieldPresence {
+    bool session_status = 1;
+    bool text = 2;
+    bool encoded_text_len = 3;
+    bool encoded_text = 4;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 session_status = 5;  // tag 1409, name SessionStatus, type INT
+  string text = 6;  // tag 58, name Text, type STRING
+  int32 encoded_text_len = 7;  // tag 354, name EncodedTextLen, type LENGTH
+  string encoded_text = 8;  // tag 355, name EncodedText, type DATA
+}
+
+message ResendRequest {
+  message FieldPresence {
+    bool begin_seq_no = 1;
+    bool end_seq_no = 2;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  int32 begin_seq_no = 5;  // tag 7, name BeginSeqNo, type SEQNUM
+  int32 end_seq_no = 6;  // tag 16, name EndSeqNo, type SEQNUM
+}
+
+message TestRequest {
+  message FieldPresence {
+    bool test_req_id = 1;
+  }
+
+  // HEADER
+  string message_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Header header = 3;
+
+  // FIELDS
+  FieldPresence field_presence = 4;
+  string test_req_id = 5;  // tag 112, name TestReqID, type STRING
+}
+

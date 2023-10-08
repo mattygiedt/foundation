@@ -1,0 +1,100 @@
+version: "3.7"
+services:
+  config-service:
+    image: java-services:latest
+    container_name: ConfigService
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.config",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.config.ConfigService"]
+    ports:
+      - "${CONFIG_SVC_PORT}:${CONFIG_SVC_PORT}"
+
+  sweeper-service:
+    image: java-services:latest
+    container_name: SweeperService
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.webapp.sweeper.v1",
+              "-DCONFIG_SVC=${CONFIG_SVC_ADDR}",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.webapp.WebappService"]
+    ports:
+      - "${SWEEPER_HTTP_UI_PORT}:${SWEEPER_HTTP_UI_PORT}"
+    depends_on:
+      - config-service
+
+  tape-service:
+    image: java-services:latest
+    container_name: TapeService
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.webapp.tape.v1",
+              "-DCONFIG_SVC=${CONFIG_SVC_ADDR}",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.webapp.WebappService"]
+    ports:
+      - "${TAPE_HTTP_UI_PORT}:${TAPE_HTTP_UI_PORT}"
+    depends_on:
+      - config-service
+
+  marketdata-consumer-service:
+    image: java-services:latest
+    container_name: MarketDataConsumer
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.marketdata.consumer.v1",
+              "-DCONFIG_SVC=${CONFIG_SVC_ADDR}",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.marketdata.MarketDataConsumer"]
+    depends_on:
+      - config-service
+
+  marketdata-publisher-service:
+    image: java-services:latest
+    container_name: MarketDataPublisher
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.marketdata.publisher.v1",
+              "-DCONFIG_SVC=${CONFIG_SVC_ADDR}",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.marketdata.MarketDataPublisher"]
+    depends_on:
+      - marketdata-consumer-service
+
+  marketdata-simulator-service:
+    image: java-services:latest
+    container_name: ExchangeSimulator
+    environment:
+      JVM_OPTS: >
+        -XX:+UseSerialGC
+        -Xss512k
+    command: ["/app/bin/app",
+              "-DSERVICE_KEY=dev.marketdata.simulator.v1",
+              "-DCONFIG_SVC=${CONFIG_SVC_ADDR}",
+              "-DTRACE_ENDPOINT=${TRACE_ENDPOINT}",
+              "-DMETER_ENDPOINT=${METER_ENDPOINT}",
+              "garden_leave.marketdata.ExchangeSimulator"]
+    depends_on:
+      - marketdata-publisher-service

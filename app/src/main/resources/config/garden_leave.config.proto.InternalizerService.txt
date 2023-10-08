@@ -1,0 +1,17 @@
+instance {
+  service {
+    name: "dev.internalizer.lob.v1"
+    config_key {
+      environment: "dev"
+      service: "internalizer"
+      instance: "lob"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/webapp.txt"
+  }
+  port: 9999
+}

@@ -1,0 +1,96 @@
+instance {
+  service {
+    name: "dev.marketdata.consumer.v1"
+    config_key {
+      environment: "dev"
+      service: "marketdata"
+      instance: "consumer"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  receiver {
+    network_interface: "eth0"
+    group_address {
+      name: "default"
+      address: "239.255.29.1"
+      port: 1235
+    }
+  }
+}
+instance {
+  service {
+    name: "dev.marketdata.publisher.v1"
+    config_key {
+      environment: "dev"
+      service: "marketdata"
+      instance: "publisher"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  receiver {
+    network_interface: "eth0"
+    group_address {
+      name: "A"
+      address: "239.255.27.1"
+      port: 1234
+    }
+  }
+  receiver {
+    network_interface: "eth0"
+    group_address {
+      name: "B"
+      address: "239.255.28.1"
+      port: 1234
+    }
+  }
+  publisher {
+    network_interface: "eth0"
+    group_address {
+      name: "default"
+      address: "239.255.29.1"
+      port: 1235
+    }
+  }
+}
+instance {
+  service {
+    name: "dev.marketdata.simulator.v1"
+    config_key {
+      environment: "dev"
+      service: "marketdata"
+      instance: "simulator"
+      category: "v1"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  publisher {
+    network_interface: "eth0"
+    group_address {
+      name: "A"
+      address: "239.255.27.1"
+      port: 1234
+    }
+  }
+  publisher {
+    network_interface: "eth0"
+    group_address {
+      name: "B"
+      address: "239.255.28.1"
+      port: 1234
+    }
+  }
+}

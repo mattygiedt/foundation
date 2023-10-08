@@ -1,0 +1,56 @@
+<fix major="5" minor="0">
+  <header/>
+  <trailer/>
+
+  <messages>
+    <message name="IOI" msgtype="6" msgcat="app">
+      <component name="ApplicationSequenceControl" required="N"/>
+      <field name="IOIID" required="Y"/>
+      <field name="IOITransType" required="Y"/>
+      <component name="ExecInstRules"/>
+      <field name="IOIRefID" required="N"/>
+      <field name="LiquidityIndicator" required="N"/>
+      <component name="YieldData"/>
+    </message>
+  </messages>
+
+  <components>
+    <component name="ApplicationSequenceControl">
+      <field name="ApplID" required="N"/>
+      <field name="ApplSeqNum" required="N"/>
+      <field name="ApplResendFlag" required="N"/>
+    </component>
+    <component name="ExecInstRules">
+      <group name="NoExecInstRules" required="N">
+        <field name="ExecInstValue" required="N"/>
+      </group>
+    </component>
+    <component name="YieldData">
+      <field name="YieldType" required="N"/>
+      <field name="Yield" required="N"/>
+      <field name="YieldCalcDate" required="N"/>
+    </component>
+  </components>
+
+  <fields>
+    <field number="8" name="BeginString" type="STRING"/>
+    <field number="9" name="BodyLength" type="LENGTH"/>
+    <field number="23" name="IOIID" type="STRING"/>
+    <field number="26" name="IOIRefID" type="STRING"/>
+    <field number="28" name="IOITransType" type="CHAR"/>
+    <field number="34" name="MsgSeqNum" type="SEQNUM"/>
+    <field number="35" name="MsgType" type="STRING"/>
+    <field number="49" name="SenderCompID" type="STRING"/>
+    <field number="52" name="SendingTime" type="UTCTIMESTAMP"/>
+    <field number="56" name="TargetCompID" type="STRING"/>
+    <field number="235" name="YieldType" type="STRING"/>
+    <field number="236" name="Yield" type="PERCENTAGE"/>
+    <field number="701" name="YieldCalcDate" type="LOCALMKTDATE"/>
+    <field number="1180" name="ApplID" type="STRING"/>
+    <field number="1181" name="ApplSeqNum" type="SEQNUM"/>
+    <field number="1352" name="ApplResendFlag" type="BOOLEAN"/>
+    <field number="1232" name="NoExecInstRules" type="NUMINGROUP"/>
+    <field number="1308" name="ExecInstValue" type="CHAR"/>
+    <field number="9730" name="LiquidityIndicator" type="INT"/>
+  </fields>
+</fix>

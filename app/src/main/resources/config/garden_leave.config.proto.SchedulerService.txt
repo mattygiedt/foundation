@@ -1,0 +1,283 @@
+instance {
+  service {
+    name: "dev.scheduler"
+    config_key {
+      environment: "dev"
+      service: "scheduler"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+  }
+
+  task {
+    name: "dev.scheduler.startup"
+    task_class: "garden_leave.scheduler.task.NullTask"
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.example-fix42.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.example-fix42.venue.hcl"
+    constraint {
+      name: "dev.scheduler.startup"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.example-fix42.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.example-fix42.venue"
+    constraint {
+      name: "start.dev.gateway.example-fix42.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.example-fix42.client"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.example-fix42.client.hcl"
+    constraint {
+      name: "start.dev.gateway.example-fix42.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 5000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.example-fix42.client"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.example-fix42.client"
+    constraint {
+      name: "start.dev.gateway.example-fix42.client"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.example-fix44.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.example-fix44.venue.hcl"
+    constraint {
+      name: "dev.scheduler.startup"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.example-fix44.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.example-fix44.venue"
+    constraint {
+      name: "start.dev.gateway.example-fix44.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.example-fix44.client"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.example-fix44.client.hcl"
+    constraint {
+      name: "start.dev.gateway.example-fix44.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 5000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.example-fix44.client"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.example-fix44.client"
+    constraint {
+      name: "start.dev.gateway.example-fix44.client"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.internalizer.lob.v1"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.internalizer.lob.v1.hcl"
+    constraint {
+      name: "dev.scheduler.startup"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.internalizer.lob.v1"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.internalizer.lob.v1"
+    constraint {
+      name: "start.dev.internalizer.lob.v1"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "20:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.internalizer-fix42.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.internalizer-fix42.venue.hcl"
+    constraint {
+      name: "start.dev.internalizer.lob.v1"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 1000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.internalizer-fix42.venue"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.internalizer-fix42.venue"
+    constraint {
+      name: "start.dev.gateway.internalizer-fix42.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+
+  task {
+    name: "start.dev.gateway.internalizer-fix42.client"
+    task_class: "garden_leave.scheduler.task.nomad.StartNomadJob"
+    arg: "hcl_resource=nomad/hcl/java-services/dev.gateway.internalizer-fix42.client.hcl"
+    constraint {
+      name: "start.dev.gateway.internalizer-fix42.venue"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    one_shot {
+      initial_delay {
+        duration: 5000
+        chrono_unit: "MILLIS"
+      }
+    }
+  }
+  task {
+    name: "stop.dev.gateway.internalizer-fix42.client"
+    task_class: "garden_leave.scheduler.task.nomad.StopNomadJob"
+    arg: "job_id=dev.gateway.internalizer-fix42.client"
+    constraint {
+      name: "start.dev.gateway.internalizer-fix42.client"
+      limit: 1
+      wait_for {
+        duration: 10
+        chrono_unit: "SECONDS"
+      }
+    }
+    fixed_time {
+      time: "15:00:00"
+      time_zone: "America/Chicago"
+    }
+  }
+}

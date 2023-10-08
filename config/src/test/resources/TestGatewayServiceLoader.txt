@@ -1,0 +1,36 @@
+instance {
+  service {
+    name: "dev.gateway.client.gateway"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "client"
+      category: "gateway"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "gateway.properties"
+  data_dictionary_file_path: "FIX42.xml"
+}
+instance {
+  service {
+    name: "dev.gateway.venue.gateway"
+    config_key {
+      environment: "dev"
+      service: "gateway"
+      instance: "venue"
+      category: "gateway"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+    banner: "banner/empty.txt"
+  }
+  session_settings_file_path: "venue.properties"
+  data_dictionary_file_path: "FIX42.xml"
+}

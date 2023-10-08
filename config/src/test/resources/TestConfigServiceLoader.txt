@@ -1,0 +1,34 @@
+instance {
+  service {
+    name: "dev.config"
+    config_key {
+      environment: "dev"
+      service: "config"
+    }
+    logback {
+      log_type: "STDOUT"
+      log_level: "INFO"
+    }
+  }
+  port: 8080
+  service_config {
+    loader_class: "garden_leave.config.loaders.marketdata.MarketDataServiceLoader"
+    from_resource: "TestMarketDataServiceLoader.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.webapp.WebappServiceLoader"
+    from_resource: "TestWebappServiceLoader.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.scheduler.SchedulerServiceLoader"
+    from_resource: "TestSchedulerServiceLoader.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.gateway.GatewayServiceLoader"
+    from_resource: "TestGatewayServiceLoader.txt"
+  }
+  service_config {
+    loader_class: "garden_leave.config.loaders.internalizer.InternalizerServiceLoader"
+    from_resource: "TestInternalizerServiceLoader.txt"
+  }
+}
